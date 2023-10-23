@@ -1,0 +1,157 @@
+[
+  {
+    "name": "Restaurante",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "pagamento(); ",
+      "deposito();",
+      "consultar_saldo();",
+      "gerar_GRU();",
+      "lerQRCODE();"
+    ],
+    "collaborators": [
+      "Usuario",
+      "Saldo"
+    ]
+  },
+  {
+    "name": "Usuário",
+    "superclasses": "",
+    "subclasses": "Informações_Pessoais, Login",
+    "type": 2,
+    "responsibilities": [
+      "novo_usuario();",
+      "deletar_conta();",
+      "editar_conta(); ",
+      "nome();",
+      "senha(); ",
+      "e-mail(); ",
+      "cpf(); ",
+      "matricula();",
+      "nivel_FUMP();",
+      "predios_acesso();",
+      "endereço();"
+    ],
+    "collaborators": [
+      "Restaurante",
+      "Saldo ",
+      "Grade ",
+      "Calendario",
+      "Transporte",
+      "Carteira Estudante",
+      "Rotina"
+    ]
+  },
+  {
+    "name": "Carteira_Estudante",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "libera_catraca(); ",
+      "gerar_carteira_digital();",
+      "consultar_acesso();",
+      "invalidar_carteira();",
+      ""
+    ],
+    "collaborators": [
+      "Usuario"
+    ]
+  },
+  {
+    "name": "Transporte",
+    "superclasses": "",
+    "subclasses": "Interno, Moradia, Externo, Van. ",
+    "type": 2,
+    "responsibilities": [
+      "proximo_onibus_interno(data_e_hora, linha);",
+      "proximo_onibus_moradia(data_e_hora, linha);",
+      "todos_os_onibus();",
+      "linhas_externas(); ",
+      "van(regiao, turno); ",
+      ""
+    ],
+    "collaborators": [
+      "Dados_transporte",
+      "Usuario"
+    ]
+  },
+  {
+    "name": "Dados_transporte",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "inserir_linha(numero_linha); ",
+      "inserir_horarios()"
+    ],
+    "collaborators": [
+      "Transporte"
+    ]
+  },
+  {
+    "name": "Calendario",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "criar_calendário();",
+      "status_entrega(); ",
+      "notificar_entrega(); ",
+      "gerenciar_entrega(nome_da_demanda, disciplina, data_de_entrega);",
+      ""
+    ],
+    "collaborators": [
+      "Rotina",
+      "Usuario",
+      "Grade Semanal"
+    ]
+  },
+  {
+    "name": "Grade Semanal",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "montar_grade(disciplina, hora, dia_da_semana, sala, predio); ",
+      "editar_grade();"
+    ],
+    "collaborators": [
+      "Calendario"
+    ]
+  },
+  {
+    "name": "Rotina ",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "disciplina(codigo, nome); ",
+      "data();",
+      "hora(); ",
+      "sala();",
+      "predio();"
+    ],
+    "collaborators": [
+      "Usuário",
+      "Calendário ",
+      "Grade Semanal"
+    ]
+  },
+  {
+    "name": "Saldo",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 2,
+    "responsibilities": [
+      "diminuir_saldo(fump);",
+      "adicionar_saldo(valor);"
+    ],
+    "collaborators": [
+      "Restaurante",
+      "Usuario"
+    ]
+  }
+]
