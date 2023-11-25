@@ -7,7 +7,6 @@
 #include <sstream>
 #include <ctime>
 #include <iomanip> 
-#include <cstdlib>  // Para a função system
 #include <limits>
 
 
