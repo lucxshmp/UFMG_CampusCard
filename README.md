@@ -1,3 +1,24 @@
-# UFMG: CAMPUScard
+<h1 align="center">Sistema Universitário Unificado: UFMG CampusCard</h1>
 
-O Sistema Universitário Unificado: UFMG CampusCard é um aplicativo idealizado pelos autores durante o curso da disciplina de Programação e Desenvolvimento de Software II. Surgiu da ideia de facilitar o dia a dia de quem frequenta a Universidade Federal de Minas Gerais - UFMG, podendo ser utilizado por qualquer aluno interessado.
+<p align="center">
+  <img src="https://github.com/lucxshmp/UFMG_CampusCard/blob/main/LOGO_Ucc2.png" alt="Logo UFMG: CampusCard">
+</p>
+
+## PROJETO
+
+Projeto desenvolvido como parte da disciplina de Programação e Desenvolvimento de Software II, no curso de Engenharia de Sistemas, na UFMG.
+
+- Ana C. F. Costa
+- Anna F. N. Rodrigues
+- Erik A. V. Rocha
+- Gabriel L. Pereira 
+- Lucas H. M.Petronilho
+
+
+## Objetivos (Explicar o projeto)
+
+
+## Como foi feito 
+
+
+## Passos futuros
