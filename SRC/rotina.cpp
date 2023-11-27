@@ -1,14 +1,18 @@
-
 #include "rotina.hpp"
+#include "validação.hpp"
+
 
     void Rotina::cadastrarDisciplina() {
 
+        Validacao validacao;
+
+        //inicializa com vazio o char
         char cadastrarMaisDisciplina = '\n';
 
         //loop de cadastro
         do{
 
-            //inserir o struct disciplina na função
+            //inserir o vetor de struct Disciplina na função
             Disciplina novaDisciplina;
 
             /*uso da função cadastarDetalhes para inserir detalhes
@@ -21,7 +25,7 @@
             char cadastrarMaisHorario = '\n';
                 do{ 
 
-                    //inserir o struct horário na função
+                    //inserir o vetor de struct Horário na função
                     Horario novoHorario;
 
                     /*uso da função cadastarHorarios para inserir os 
@@ -32,17 +36,15 @@
                     novaDisciplina.horarios.push_back(novoHorario);
 
                     //possibilidade de cadastro de mais horários
+                    std::cout << std::endl;
+                    std::cout << std::setw(80) << std::setfill('-') << "" << std::endl;
                     std::cout << "Deseja cadastrar mais um horário para a disciplina? (S/N): ";
                     std::cin >> cadastrarMaisHorario;
+                    validacao.validarSN(cadastrarMaisHorario);
 
                     //limpar buffer do teclado
                     if (cadastrarMaisHorario == 'S' || cadastrarMaisHorario == 's'){
                         std::cin.ignore();
-                    }
-
-                    while (!(cadastrarMaisHorario == 'S' || cadastrarMaisHorario == 's' || cadastrarMaisHorario == 'N' || cadastrarMaisHorario == 'n')) {
-                        std::cout << "Escolha um valor válido (S/N): ";
-                        std::cin >> cadastrarMaisHorario;
                     }
 
                 //sair do loop apenas quando o usuário não tiver mais horários para cadastrar
@@ -52,16 +54,14 @@
             disciplinas.push_back(novaDisciplina);
 
             //possibilidade de cadastro de mais disciplinas
+            std::cout << std::setw(80) << std::setfill('-') << "" << std::endl;
             std::cout << "Deseja cadastrar mais uma disciplina? (S/N):";
             std::cin >> cadastrarMaisDisciplina;
+            validacao.validarSN(cadastrarMaisDisciplina);
 
             //limpar buffer do teclado
-            if (cadastrarMaisDisciplina == 'S' || cadastrarMaisDisciplina == 's') {
+            if (cadastrarMaisDisciplina == 'S' || cadastrarMaisDisciplina == 's'){
                 std::cin.ignore();
-            }
-            while (!(cadastrarMaisDisciplina == 'S' || cadastrarMaisDisciplina == 's' || cadastrarMaisDisciplina == 'N' || cadastrarMaisDisciplina == 'n')) {
-                std::cout << "Escolha um valor válido (S/N): ";
-                std::cin >> cadastrarMaisDisciplina;
             }
 
         //sair do loop apenas quando o usuário não tiver mais disciplinas para cadastrar
@@ -73,10 +73,13 @@
     //função que permite realizar alterações nas disciplinas
     void Rotina::editar_disciplina(){
 
-        //Auxiliares
+        //inserir a classe Valicao na função
+        Validacao validacao;
+
+        //Auxiliares inicializados
         int disci = 0;
         int func = 0;
-        char realizarAlteracao;
+        char realizarAlteracao = '\n';
 
         do{
 
@@ -85,7 +88,7 @@
 
             //Listar todas as disciplinas cadastradas
             for(int i=0; i<disciplinas.size(); i++){
-                std::cout << "Digite "<< i+1 << " - " << disciplinas[i]._nome << std::endl;
+                std::cout << "Digite "<< i+1 << disciplinas[i]._nome << std::endl;
             }
 
             std::cin >> disci;
@@ -97,7 +100,8 @@
             std::cout << "Digite 4 - se você quiser alterar o prédio" << std::endl;
             std::cout << "Digite 5 - se você quiser alterar o horário" << std::endl;
 
-            std::cin >> func;
+            func = validacao.validarNumero(func);
+
 
             //switch que permite alterar a variavel desejada da disciplina
             switch(func){
@@ -131,6 +135,8 @@
                     std::cin >> disciplinas[disci-1]._codigo;
                     std::cout << "O novo código é" << disciplinas[disci-1]._codigo << std::endl;
                     break;
+                default:
+                    std::cout << "Valor Inválido" << std::endl;
             }
 
             //Possibilidade de realizar mais alterações
@@ -145,45 +151,16 @@
 
     }
 
-    std::string Rotina::transformarEmDia(int dia){
-        
-        /*switch que retorna um valor correspondente ao 
-        número pré selecionado a um dia da semana */
-        switch (dia) {
-            case 1:
-                return "Segunda";
-            case 2:
-                return "Terça";
-            case 3:
-                return "Quarta";
-            case 4:
-                return "Quinta";
-            case 5:
-                return "Sexta";
-            case 6:
-                return "Sábado";
-            default:
-                return "Dia inválido";
-        }
-    }
-
-    std::string Rotina::transformarEmHora(int hora){
-
-        /*switch que retorna um valor correspondente ao 
-        número pré selecionado a um horário do turno
-        noturno da universidade UFMG */
-        switch (hora) {
-            case 1:
-                return "19:00 a 20:40";
-            case 2:
-                return "20:55 a 22:25";
-            default:
-                return "Hórario inválido";
-        }
-    }
     void Rotina::cadastrarDetalhes(Disciplina &novaDisciplina){
+
         /*cadastro de dados da disciplina colocando o nome e 
         as suas informaçoes em um vetor de disciplinas*/
+        std::cout << std::endl;
+        std::cout << std::setw(80) << std::setfill('*') << "" << std::endl;
+        std::cout << std::setw(15) << std::setfill(' ') << std::left << "Cadastre a disciplina" << std::setw(25) << std::setfill(' ') << std::right << "" << std::endl;
+        std::cout << std::setw(80) << std::setfill('*') << "" << std::endl;
+        std::cout << std::endl;
+
         std::cout << "- Digite o código da disciplina: ";
         std::getline(std::cin, novaDisciplina._codigo);
 
@@ -195,58 +172,77 @@
 
         std::cout << "- Digite a sala: ";
         std::getline(std::cin, novaDisciplina._sala);
+
     }
 
     void Rotina::cadastrarHorarios(Horario &novoHorario){ 
-        //cadastro do dia, porém com limitação do dia das semanas ao usuário
-        std::cout << "Escolha o dia da semana:\n";
-        std::cout << "  1. Segunda  2. Terça  3. Quarta\n  4. Quinta   5. Sexta  6. Sábado\n";
-        std::cin >> novoHorario._dia;
 
-        //se nenhum número válido for adicionado se pede para repetir o processo - //ver isso
+    //Insreir classe validao na função
+    Validacao validacao;
+        do {
 
-        //cadastro do horario, porém com limitação.
-        std::cout << "Escolha o horário: " << std::endl;
-        std::cout << "  1. 19:00 a 20:40\n  2. 20:55 a 22:25\n";
-        std::cin >> novoHorario._hora;
+            // cadastro do dia, porém com limitação do dia das semanas ao usuário
+            std::cout << "Escolha o dia da semana: " << std::endl;
+            std::cout << "     1. Segunda  2. Terça  3. Quarta\n     4. Quinta   5. Sexta  6. Sábado\n";
+            std::cin >> novoHorario._dia;
+            std::cout << std::endl;
+            novoHorario._dia = validacao.validarDia(novoHorario._dia);
 
-        //se nenhum número válido for adicionado se pede para repetir o processo
-        while (novoHorario._hora < 1 || novoHorario._hora > 2){
-        std::cout << "Escolha um valor válido: ";
-        std::cin >> novoHorario._hora;
-        }
+            // cadastro do horário, porém com limitação.
+            std::cout << "Escolha o horário: " << std::endl;
+            std::cout << "     1. 19:00 a 20:40\n     2. 20:55 a 22:25\n";
+            std::cin >> novoHorario._hora;
+            std::cout << std::endl;
+            novoHorario._hora = validacao.validarHorario(novoHorario._hora);
+
+            // Verificar se já existe uma disciplina cadastrada no mesmo horário
+            if (existeDisciplinaNoHorario(novoHorario._dia, novoHorario._hora)) {
+                std::cout << "Já existe uma disciplina cadastrada nesse horário. Escolha outro horário.\n";
+            } else {
+                // Se não houver disciplina cadastrada no mesmo horário, sair do loop
+                break;
+            }
+        } while (true);
+
     }
 
+    void Rotina::informacoes_disciplina(){
 
-void Rotina::informacoes_disciplina(){
+        //inserir classe Validacao na função
+        Validacao validacao;
 
-    //auxiliares
-    std::string numerosdias[] = {"1", "2", "3", "4", "5", "6"}; 
-    std::string numerohoras[] = {"1", "2"};
-    std::string diaSemana[] = {"Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sabado"};
-    std::string horario[] = {"19:00 a 20:40", "20:55 a 22:25"};
+        //loop que imprimi na tela as disciplinas cadastradas
+        std::cout << std::setw(40) << std::setfill('=') << "" << std::endl;
+        std::cout << std::setw(15) << std::setfill(' ') << std::left << "Informações disciplinas" << std::setw(25) << std::setfill(' ') << std::right << "" << std::endl;
+        std::cout << std::setw(40) << std::setfill('=') << "" << std::endl;
+        for(int i = 0; i<disciplinas.size(); i++){
+            std::cout << "- " << disciplinas[i]._nome << "(" << disciplinas[i]._codigo << ")" << std::endl;
+            std::cout << "    Prédio - " << disciplinas[i]._predio << ", sala " << disciplinas[i]._sala << std::endl;
 
-    //loop que imprimi na tela as disciplinas cadastradas
-    for(int i = 0; i<disciplinas.size(); i++){
-        std::cout << "- " << disciplinas[i]._nome << "(" << disciplinas[i]._codigo << ")" << std::endl;
-        std::cout << "    " << disciplinas[i]._predio << "-" << disciplinas[i]._sala << std::endl;
-
-        //loop para alterar horários 
-        for(int j=0; j<disciplinas[i].horarios.size(); j++){
-            std::cout << "    " << transformarEmDia(disciplinas[i].horarios[j]._dia) << " - " << transformarEmHora(disciplinas[i].horarios[j]._hora) << std::endl;
+            //loop para alterar horários 
+            for(int j=0; j<disciplinas[i].horarios.size(); j++){
+                std::cout << "    " << validacao.transformarEmDia(disciplinas[i].horarios[j]._dia) << " - " << validacao.transformarEmHora(disciplinas[i].horarios[j]._hora) << std::endl;
+            }
+            std::cout << std::setw(40) << std::setfill('-') << "" << std::endl;
         }
-        std::cout << "-----------------------------------------------" << std::endl;
+
     }
 
-}
+    //conferir se existe disciplina cadastrada em um horário
+    bool Rotina::existeDisciplinaNoHorario(int dia, int hora) const {
 
-bool Rotina::existeDisciplinaNoHorario(int dia, int hora) const {
-    for (const auto& disciplina : disciplinas) {
-        for (const auto& horario : disciplina.horarios) {
-            if (horario._dia == dia && horario._hora == hora) {
-                return true;  // Disciplina já cadastrada no horário especificado
+        //inicia o loop se tiver disciplina cadastrada
+        for (const auto& disciplina : disciplinas) {
+            for (const auto& horario : disciplina.horarios) {
+                if (horario._dia == dia && horario._hora == hora) {
+                    return true;  
+                }
             }
         }
+        return false; //não possui cadastradas 
     }
-    return false;  // Nenhuma disciplina cadastrada no horário especificado
-}
+
+    //getDisciplina
+    const std::vector<Rotina::Disciplina>& Rotina::getDisciplinas() const {
+        return disciplinas;
+    }

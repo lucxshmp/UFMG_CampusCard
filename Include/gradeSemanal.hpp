@@ -5,7 +5,6 @@
 #include <chrono>
 #include <vector>
 #include <sstream>
-#include <ctime>
 #include <iomanip> 
 #include "rotina.hpp"
 
@@ -18,7 +17,6 @@
             Rotina rotina;
 
         public:
-
 
 
             void criarGrade(Rotina &rotina);
