@@ -1,3 +1,17 @@
-# UFMG: CAMPUScard
+readme # UFMG: CampusCard
 
-O Sistema Universitário Unificado: UFMG CampusCard é um aplicativo idealizado pelos autores durante o curso da disciplina de Programação e Desenvolvimento de Software II. Surgiu da ideia de facilitar o dia a dia de quem frequenta a Universidade Federal de Minas Gerais - UFMG, podendo ser utilizado por qualquer aluno interessado.
+<p align="center">
+  <img src="caminho/para/sua/imagem.png" alt="Descrição da imagem">
+</p>
+
+### Desenvolvedores
+
+Conteúdo do subtítulo...
+
+## Objetivos (Explicar o projeto)
+
+
+## Como foi feito 
+
+
+## Passos futuros
