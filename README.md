@@ -1,4 +1,4 @@
-readme # UFMG: CampusCard
+# UFMG: CampusCard
 
 <p align="center">
   <img src="caminho/para/sua/imagem.png" alt="Descrição da imagem">
