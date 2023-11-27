@@ -17,13 +17,16 @@
             Rotina rotina;
 
         public:
-
-
+            /**
+             * @brief função que cria uma grade e os associa com as disciplinas
+             * @param rotina classe rotina
+             */
             void criarGrade(Rotina &rotina);
 
-            ///@brief exibir grade por dia da semana
-
-            ///@brief exibir grade da semana
+            /**
+             * @brief função que responsavel por imprimir a grade
+             * @param parametro vetor de vetor correspondente a grade
+             */
             void exibir_grade_semanal(std::vector<std::vector<std::string>>& parametro);
 
     };
