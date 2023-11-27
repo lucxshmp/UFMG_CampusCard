@@ -11,7 +11,7 @@ namespace media::ui{
         _options.push_back("1 - cadastrar evento ou tarefa");
         _options.push_back("2 - editar evento ou tarefa");
         _options.push_back("3 - exibir lista ordenada por prazo de eventos e tarefas ");
-        _options.push_back("3 - voltar ao menu principal ");
+        _options.push_back("4 - voltar ao menu principal ");
 
     }
 
@@ -23,27 +23,23 @@ namespace media::ui{
         switch (option) {
             case 1:
                 eventos.adicionarTarefas(tarefas);
-                MenuEventos::MenuEventos();
-                return nullptr; 
+                return MenuEventos();
 
             case 2:
                 eventos.editarTarefas(tarefas); 
-                MenuEventos::MenuEventos();
-                return nullptr; 
+                return MenuEventos();
 
             case 3:
-                eventos.exibirPorPrazo
-                MenuEventos::MenuEventos();
-                return nullptr;
+                eventos.exibirPorPrazo(tarefas);
+                return MenuEventos();
             
             case 4;
-                MenuPrincipal::MenuPrincipal();
-                return nullptr;
+                return MenuPrincipal::MenuPrincipal();;
 
             default:
                 // Opção inválida, retorne nullptr ou um menu padrão
                 std::cout << "Opcao invalida!" << std::endl;
-                return nullptr;
+                return MenuEventos();;
 
         }
     }
