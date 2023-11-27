@@ -1,7 +1,7 @@
 <h1 align="center">Sistema Universitário Unificado: UFMG CampusCard</h1>
 
 <p align="center">
-  <img src="https://github.com/lucxshmp/UFMG_CampusCard/blob/main/LOGO_Ucc.png" alt="Logo UFMG: CampusCard">
+  <img src="https://github.com/lucxshmp/UFMG_CampusCard/blob/main/LOGO_Ucc2.png" alt="Logo UFMG: CampusCard">
 </p>
 
 ## PROJETO
