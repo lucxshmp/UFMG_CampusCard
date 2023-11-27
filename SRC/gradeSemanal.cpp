@@ -62,15 +62,4 @@
     }
 
 
-int main(){
-
-  Rotina rotina;
-  rotina.cadastrarDisciplina();
-
-  Grade_Semanal gradeSemanal;
-  gradeSemanal.criarGrade(rotina);
-
-    return 0;
-
-}
 
