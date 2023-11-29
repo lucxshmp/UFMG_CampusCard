@@ -30,8 +30,8 @@ namespace media::ui{
                 bool novo_status;
                 std::cin >> novo_status; 
                 
-                if (novo_status != 1 || novo_status != 0){
-                    while (novo_status != 1 || novo_status != 0){
+                if (novo_status != 1 && novo_status != 0){
+                    while (novo_status != 1 && novo_status != 0){
                         std::cout <<"Valor invalido, tente novamente:\n";
                         std::cin >> novo_status;
                     }   
