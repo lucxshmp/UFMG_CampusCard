@@ -33,6 +33,7 @@ namespace media::ui{
                 if (novo_status != 1 && novo_status != 0){
                     while (novo_status != 1 && novo_status != 0){
                         std::cout <<"Valor invalido, tente novamente:\n";
+                        std::cout << "Digite 0 para invalidar a carteirinha ou 1 para validá-la\n";
                         std::cin >> novo_status;
                     }   
                 }
