@@ -6,10 +6,12 @@
 #include <vector>
 
     //função que adiciona uma tarefa ao vetor tarefas
-    void Eventos::adicionarTarefas(std::vector<Eventos>& tarefas){
+    void Eventos::adicionarTarefas(std::vector<Eventos>& tarefas) {
 
+        //adicionar classe Validacao
         Validacao validacao;
-        
+        validacao.tituloSessao("Adicionar Tarefas");
+
         //auxiliar do loop
         char cadastrarMaisTarefas;
 
@@ -17,19 +19,25 @@
         do {
 
             //inserir dados as tarefas
-            std::cout << "Digite o nome da tarefa: ";
+            std::cout << "> Digite o nome da tarefa: ";
             std::getline(std::cin, _nome);
 
-            std::cout << "Digite a descrição da tarefa: ";
+            std::cout << "> Digite a descrição da tarefa: ";
             std::getline(std::cin, _descricao);
 
-            std::cout << "Digite a data de vencimento da tarefa (formato: DD-MM-AAAA): ";
-            std::getline(std::cin, _data);
+            //validar data
+            do {
+                std::cout << "> Digite a data de vencimento da tarefa (formato: DD-MM-AAAA): ";
+                std::getline(std::cin, _data);
+            } while (!validacao.validarFormatoData(_data));
 
-            std::cout << "Digite a hora de vencimento da tarefa (formato: HH:MM): ";
-            std::getline(std::cin, _hora);
+            //validar hora
+            do {
+                std::cout << "> Digite a hora de vencimento da tarefa (formato: HH:MM): ";
+                std::getline(std::cin, _hora);
+            } while (!validacao.validarFormatoHora(_hora));
 
-            std::cout << "Digite a disciplina da tarefa: ";
+            std::cout << "> Digite a disciplina da tarefa: ";
             std::getline(std::cin, _disciplina);
 
             deadline = parseDateTime(_data, _hora);
@@ -37,11 +45,14 @@
             //adicionar tarefa ao vetor
             tarefas.push_back(*this);
 
-            // opção de cadastro de mais tarefas
-            std::cout << "Deseja cadastrar mais tarefas? (S para sim, qualquer outra tecla para não): ";
+             // opção de cadastro de mais tarefas
+            std::cout << std::endl << ">>> Deseja cadastrar mais tarefas? (S/N): ";
             std::cin >> cadastrarMaisTarefas;
+            
             validacao.validarSN(cadastrarMaisTarefas);
-            std::cin.ignore(); // Limpa o buffer de entrada
+          std::cout << std::endl;
+            if(cadastrarMaisTarefas == 's' || cadastrarMaisTarefas == 'S') std::cout << "  Cadastrar nova Tarefa" << std::endl;
+            std::cin.ignore();
 
         //condição de parada do loop
         } while (cadastrarMaisTarefas == 'S' || cadastrarMaisTarefas == 's');
@@ -50,6 +61,10 @@
     //função que ordena a exibição da lista por prazo
     void Eventos::exibirPorPrazo(const std::vector<Eventos>& tarefas){ 
 
+        //adicionar classe Validacao
+        Validacao validacao;
+        validacao.tituloSessao("Lista de Tarefas Ordenadas por Prazo");
+
         //copia o vetor
         std::vector<Eventos> tarefasCopia = tarefas;  
 
@@ -57,10 +72,11 @@
         std::sort(tarefasCopia.begin(), tarefasCopia.end()); 
 
         //chama a função que imprime
-        std::cout << "\nLista de Tarefas Ordenadas por Prazo:\n";
         for (const auto& tarefas : tarefasCopia) {
             tarefas.displayTarefa();
         }
+
+      
     }
 
     //função que imprime a lista
@@ -74,7 +90,7 @@
 
         //analisa se o prazo já venceu
         if (tempoRestante.first < 0) {
-            std::cout << "Prazo Vencido\n";
+            std::cout << "(!) Vencido (!)" << std::endl;
         } else {
             std::cout << tempoRestante.first << " dias e " << tempoRestante.second << " horas\n";
         }
@@ -83,8 +99,10 @@
 
     //função que permite a possibilidade de editar tarefas
     void Eventos::editarTarefas(std::vector<Eventos>& tarefas) {
-        
+
+        //adicionar classe Validacao
         Validacao validacao;
+        validacao.tituloSessao("Editar tarefas");
 
         //tarefas com index
         int tarefaIndex = 0;
@@ -95,69 +113,79 @@
         //loop que permite mais edições
         do{
 
-            std::cout << "Escolha o número correspondente para alterar a tarefa" << std::endl;
 
             //lista todas as tarefas cadastradas
             for (int i = 0; i < tarefas.size(); i++) {
-                std::cout << "Digite " << i + 1 << " para editar: " << tarefas[i]._nome << std::endl;
+                std::cout << "> Digite " << i + 1 << " para editar: " << tarefas[i]._nome << std::endl;
             }
-
+            std::cout << std::endl;
+            std::cout << ">>> Escolha ";
             tarefaIndex = validacao.validarNumero(tarefaIndex);
-
+            std::cout << std::endl;
             //levar o indíce a zero
             tarefaIndex--;
 
             //analise do indíce
             if (tarefaIndex >= 0 && tarefaIndex < tarefas.size()) {
-                
-                std::cout << "Escolha o atributo a ser editado:\n"
-                          << "1. Nome\n"
-                          << "2. Descrição\n"
-                          << "3. Data\n"
-                          << "4. Hora\n"
-                          << "5. Disciplina\n"
-                          << "Escolha: ";
+
+                std::cout << " Escolha o atributo a ser editado:\n"
+                          << "    1. Nome\n"
+                          << "    2. Descrição\n"
+                          << "    3. Data\n"
+                          << "    4. Hora\n"
+                          << "    5. Disciplina\n"
+                          << "    >> Escolha: ";
 
                 int escolha = 0;
                 escolha = validacao.validarNumero(escolha);
                 std::cin.ignore(); // Limpar o buffer de entrada
+                std::cout << std::endl;
 
                 //switch que altera o desejado pelo usuário
                 switch (escolha) {
                     case 1:
-                        std::cout << "Digite o novo nome: ";
+                        std::cout << "    > Digite o novo nome: ";
                         std::getline(std::cin, tarefas[tarefaIndex]._nome);
                         break;
                     case 2:
-                        std::cout << "Digite a nova descrição: ";
+                        std::cout << "    > Digite a nova descrição: ";
                         std::getline(std::cin, tarefas[tarefaIndex]._descricao);
                         break;
                 case 3:
-                    std::cout << "Digite a nova data (formato: DD-MM-AAAA): ";
-                    std::getline(std::cin, tarefas[tarefaIndex]._data);
+                    //permitir só entrada válida
+                    do{
+                        std::cout << "    > Digite a nova Hora de vencimento da tarefa (formato: HH:MM): ";
+                        std::getline(std::cin, tarefas[tarefaIndex]._data);
+                    }while (!validacao.validarFormatoData(tarefas[tarefaIndex]._hora));
+
                     // Recalcular o prazo após alterar a data
                     tarefas[tarefaIndex].deadline = parseDateTime(tarefas[tarefaIndex]._data, tarefas[tarefaIndex]._hora);
                     break;
                 case 4:
-                    std::cout << "Digite a nova hora (formato: HH:MM): ";
-                    std::getline(std::cin, tarefas[tarefaIndex]._hora);
+                    //permitir só entrada válida
+                    do{
+                        std::cout << "    > Digite a nova hora de vencimento da tarefa (formato: HH:MM): ";
+                        std::getline(std::cin, tarefas[tarefaIndex]._hora);
+                    }while (!validacao.validarFormatoHora(tarefas[tarefaIndex]._hora));
+
                     // Recalcular o prazo após alterar a hora
                     tarefas[tarefaIndex].deadline = parseDateTime(tarefas[tarefaIndex]._data, tarefas[tarefaIndex]._hora);
                     break;
                     case 5:
-                        std::cout << "Digite a nova disciplina: ";
+                        std::cout << "    > Digite a nova disciplina: ";
                         std::getline(std::cin, tarefas[tarefaIndex]._disciplina);
                         break;
                     default:
-                        std::cout << "Escolha inválida.\n";
+                        std::cout << "(!) Escolha inválida. " << std::endl;
                         break;
                 }
             }else{
-                std::cout << "Índice inválido.\n";
+                std::cout << "Índice inválido. " << std::endl;
             }
 
             //possibilidade de realizar mais alterações
-            std::cout << "Deseja realizar mais alterações? (S/N): " << std::endl;
+            std::cout << std::endl;
+            std::cout << ">>> Deseja realizar mais alterações? (S/N): " << std::endl;
             std::cin >> realizarAlteracao;
             validacao.validarSN(realizarAlteracao);
 
@@ -197,25 +225,12 @@
         std::istringstream dateStream(date + " " + time);
         dateStream >> std::get_time(&tm, "%d-%m-%Y %H:%M");
 
-        auto timePoint = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+        //configura para o fuso de Brasília
+        std::chrono::minutes brtOffset = std::chrono::minutes(+240);
+
+        auto timePoint = std::chrono::system_clock::from_time_t(std::mktime(&tm)) + brtOffset;
+
         return timePoint;
     }
 
-    int main() {
-        std::vector<Eventos> tarefas;
-        Eventos eventos;
-
-        // Adicionar tarefas
-        eventos.adicionarTarefas(tarefas);
-
-
-        // Exibir tarefas ordenadas pelo prazo
-        eventos.exibirPorPrazo(tarefas);
-
-
-        eventos.editarTarefas(tarefas);
-        eventos.exibirPorPrazo(tarefas);
-
-
-        return 0;
-    }
+    

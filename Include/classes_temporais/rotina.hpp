@@ -6,6 +6,8 @@
 #include <sstream>
 #include <iomanip> 
 #include <limits>
+#include <fstream>
+
 
 
     //classe em que se cadastra uma disciplina no quadro semanal
@@ -63,19 +65,6 @@
              */
             void informacoes_disciplina();
 
-            /**
-             * @brief função que altera o valor digitado em inteiro para um char correspondente ao dia da semana
-             * @param dia recebe o inteiro digitado associado ao dia
-             * @return retorna o dia associado ao número
-             */
-            std::string transformarEmDia(int dia);
-
-            /**
-             * @brief função que altera o valor digitado em inteiro para um char correspondente ao horario
-             * @param hora recebe o inteiro digitado associado ao horario
-             * @return retorna o horario associado ao número
-             */
-            std::string transformarEmHora(int hora);
 
             /**
              * @brief função que permite a consulta se há uma disciplina cadastrada em um dia e hora
@@ -98,5 +87,16 @@
              */
             void cadastrarDetalhes(Disciplina &novadisciplina);
 
-    };
+            /**
+             * @brief função que salva a disciplina cadastrada em um arquivo
+             * @param nomeArquivo nome do arquivo em que os dados serão salvos
+             */
+            void salvarDisciplinasEmArquivo(const std::string& nomeArquivo) const;
+            
+            /**
+             * @brief função que adiciona as disciplinas do arquivo no vetor
+             * @param nomeArquivo nome do arquivo em que os dados serão salvos
+             */
+            void carregarDisciplinasDeArquivo(const std::string& nomeArquivo);
 
+    };

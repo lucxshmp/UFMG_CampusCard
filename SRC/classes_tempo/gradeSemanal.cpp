@@ -1,9 +1,12 @@
 #include "gradeSemanal.hpp"
 #include "rotina.hpp"
+#include "validação.hpp"
 
     //associa os horários das disciplinas com a grade
     void Grade_Semanal::criarGrade(Rotina &rotina){
 
+        Validacao validacao;
+        validacao.tituloSessao("Grade de Horário");
 
         //auxiliares para manipulção de dados e leitura do código
         const int colunas = 7;

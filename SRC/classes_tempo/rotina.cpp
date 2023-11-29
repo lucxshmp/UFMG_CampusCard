@@ -4,7 +4,9 @@
 
     void Rotina::cadastrarDisciplina() {
 
+        //adicionar classe Validacao
         Validacao validacao;
+        validacao.tituloSessao("Cadastrar Disciplinas");
 
         //inicializa com vazio o char
         char cadastrarMaisDisciplina = '\n';
@@ -36,11 +38,11 @@
                     novaDisciplina.horarios.push_back(novoHorario);
 
                     //possibilidade de cadastro de mais horários
-                    std::cout << std::endl;
-                    std::cout << std::setw(80) << std::setfill('-') << "" << std::endl;
-                    std::cout << "Deseja cadastrar mais um horário para a disciplina? (S/N): ";
+                    
+                    std::cout << ">>> Deseja cadastrar mais um horário para a disciplina? (S/N): ";
                     std::cin >> cadastrarMaisHorario;
                     validacao.validarSN(cadastrarMaisHorario);
+                    std::cout << std::endl;
 
                     //limpar buffer do teclado
                     if (cadastrarMaisHorario == 'S' || cadastrarMaisHorario == 's'){
@@ -54,10 +56,11 @@
             disciplinas.push_back(novaDisciplina);
 
             //possibilidade de cadastro de mais disciplinas
-            std::cout << std::setw(80) << std::setfill('-') << "" << std::endl;
-            std::cout << "Deseja cadastrar mais uma disciplina? (S/N):";
+            std::cout << std::setw(60) << std::setfill('-') << "" << std::endl;
+            std::cout << ">>> Deseja cadastrar mais uma disciplina? (S/N):";
             std::cin >> cadastrarMaisDisciplina;
             validacao.validarSN(cadastrarMaisDisciplina);
+            std::cout << std::endl;
 
             //limpar buffer do teclado
             if (cadastrarMaisDisciplina == 'S' || cadastrarMaisDisciplina == 's'){
@@ -75,9 +78,10 @@
 
         //inserir a classe Valicao na função
         Validacao validacao;
+        validacao.tituloSessao("Editar Disciplinas");
 
         //Auxiliares inicializados
-        int disci = 0;
+        int aux = 0;
         int func = 0;
         char realizarAlteracao = '\n';
 
@@ -88,60 +92,65 @@
 
             //Listar todas as disciplinas cadastradas
             for(int i=0; i<disciplinas.size(); i++){
-                std::cout << "Digite "<< i+1 << disciplinas[i]._nome << std::endl;
+                std::cout << i+1 << " - " << disciplinas[i]._nome << std::endl;
             }
-
-            std::cin >> disci;
+            std::cout << ">>> ";
+            aux = validacao.validarNumero(aux);
+            std::cout << std::endl;
 
             //Usuário escolhe qual informação deseja alterar
-            std::cout << "Digite 1 - se você quiser alterar o nome" << std::endl;
-            std::cout << "Digite 2 - se você quiser alterar o código" << std::endl;
-            std::cout << "Digite 3 - se você quiser alterar a sala" << std::endl;
-            std::cout << "Digite 4 - se você quiser alterar o prédio" << std::endl;
-            std::cout << "Digite 5 - se você quiser alterar o horário" << std::endl;
+            std::cout << "    Escolha o atributo a ser editado:\n"
+                          << "     1. Nome\n"
+                          << "     2. Código\n"
+                          << "     3. Sala\n"
+                          << "     4. Prédio\n"
+                          << "     5. Horário\n"
+                          << "     >> Escolha: ";
 
             func = validacao.validarNumero(func);
-
+            std::cout << std::endl;
 
             //switch que permite alterar a variavel desejada da disciplina
             switch(func){
 
                 case 1:
-                    std::cout << "Digite o novo nome: " << std::endl;
-                    std::cin >> disciplinas[disci-1]._nome;
-                    std::cout << "O novo nome é" << disciplinas[disci-1]._nome << std::endl;
+                    std::cout << "    > Digite o novo nome: ";
+                    std::cin >> disciplinas[func-1]._nome;
                     break;
 
                 case 2: 
-                    std::cout << "Digite o novo código: " << std::endl;
-                    std::cin >> disciplinas[disci-1]._codigo;
-                    std::cout << "O novo código é" << disciplinas[disci-1]._codigo << std::endl;
+                    std::cout << "Digite o novo código: ";
+                    std::cin >> disciplinas[func-1]._codigo;
                     break;
 
                 case 3: 
-                    std::cout << "Digite a nova sala: " << std::endl;
-                    std::cin >> disciplinas[disci-1]._sala;
-                    std::cout << "A nova sala é" << disciplinas[disci-1]._sala << std::endl;
+                    std::cout << "Digite a nova sala: ";
+                    std::cin >> disciplinas[func-1]._sala;
                     break;
 
                 case 4: 
-                    std::cout << "Digite o novo prédio: " << std::endl;
-                    std::cin >> disciplinas[disci-1]._predio;
-                    std::cout << "O novo predio é" << disciplinas[disci-1]._predio << std::endl;
+                    std::cout << "Digite o novo prédio: ";
+                    std::cin >> disciplinas[func-1]._predio;
                     break;
 
                 case 5: 
-                    std::cout << "Digite o novo código: " << std::endl;
-                    std::cin >> disciplinas[disci-1]._codigo;
-                    std::cout << "O novo código é" << disciplinas[disci-1]._codigo << std::endl;
+                    std::cout << "Digite o novo código: ";
+                    std::cin >> disciplinas[func-1]._codigo;
                     break;
+              
                 default:
                     std::cout << "Valor Inválido" << std::endl;
             }
 
+            std::cout << std::endl;
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(),   '\n');
+
+          
             //Possibilidade de realizar mais alterações
-            std::cout << "Deseja realizar mais alterações? (S/N): " << std::endl;
+            std::cout << ">>> Deseja realizar mais alterações? (S/N): ";
             std::cin >> realizarAlteracao;
+            validacao.validarSN(realizarAlteracao);
+            std::cout << std::endl;
 
             //limpar buffer
             if(realizarAlteracao == 'S' || realizarAlteracao == 's') std::cin.ignore();
@@ -155,22 +164,17 @@
 
         /*cadastro de dados da disciplina colocando o nome e 
         as suas informaçoes em um vetor de disciplinas*/
-        std::cout << std::endl;
-        std::cout << std::setw(80) << std::setfill('*') << "" << std::endl;
-        std::cout << std::setw(15) << std::setfill(' ') << std::left << "Cadastre a disciplina" << std::setw(25) << std::setfill(' ') << std::right << "" << std::endl;
-        std::cout << std::setw(80) << std::setfill('*') << "" << std::endl;
-        std::cout << std::endl;
 
-        std::cout << "- Digite o código da disciplina: ";
+        std::cout << "> Digite o código da disciplina: ";
         std::getline(std::cin, novaDisciplina._codigo);
 
-        std::cout << "- Digite o nome da disciplina: ";
+        std::cout << "> Digite o nome da disciplina: ";
         std::getline(std::cin, novaDisciplina._nome);
 
-        std::cout << "- Digite o prédio: ";
+        std::cout << "> Digite o prédio: ";
         std::getline(std::cin, novaDisciplina._predio);
 
-        std::cout << "- Digite a sala: ";
+        std::cout << "> Digite a sala: ";
         std::getline(std::cin, novaDisciplina._sala);
 
     }
@@ -182,24 +186,29 @@
         do {
 
             // cadastro do dia, porém com limitação do dia das semanas ao usuário
-            std::cout << "Escolha o dia da semana: " << std::endl;
-            std::cout << "     1. Segunda  2. Terça  3. Quarta\n     4. Quinta   5. Sexta  6. Sábado\n";
-            std::cin >> novoHorario._dia;
             std::cout << std::endl;
+            std::cout << " DIAS DA SEMANA " << std::endl;
+            std::cout << " 1. Segunda\n 2. Terça\n 3. Quarta\n 4. Quinta\n 5. Sexta\n 6. Sábado" << std::endl;
+            std::cout << std::endl;
+            std::cout << "> Escolha o dia da semana: ";
+            std::cin >> novoHorario._dia;
             novoHorario._dia = validacao.validarDia(novoHorario._dia);
 
             // cadastro do horário, porém com limitação.
-            std::cout << "Escolha o horário: " << std::endl;
-            std::cout << "     1. 19:00 a 20:40\n     2. 20:55 a 22:25\n";
-            std::cin >> novoHorario._hora;
             std::cout << std::endl;
+            std::cout << " HORÁRIOS NOTURNO " << std::endl;
+            std::cout << " 1. 19:00 a 20:40\n 2. 20:55 a 22:25" << std::endl;
+            std::cout << std::endl;
+            std::cout << "> Escolha o horário de aula: ";
+            std::cin >> novoHorario._hora;
             novoHorario._hora = validacao.validarHorario(novoHorario._hora);
+            std::cout << std::endl;
 
-            // Verificar se já existe uma disciplina cadastrada no mesmo horário
+            //verificar se já existe uma disciplina cadastrada no mesmo horário
             if (existeDisciplinaNoHorario(novoHorario._dia, novoHorario._hora)) {
-                std::cout << "Já existe uma disciplina cadastrada nesse horário. Escolha outro horário.\n";
+                std::cout << "(!) Já existe uma disciplina cadastrada nesse horário.\n(!) Escolha outro horário.\n";
             } else {
-                // Se não houver disciplina cadastrada no mesmo horário, sair do loop
+                //se não houver disciplina cadastrada no mesmo horário, sair do loop
                 break;
             }
         } while (true);
@@ -210,11 +219,10 @@
 
         //inserir classe Validacao na função
         Validacao validacao;
+        validacao.tituloSessao("Informações das disciplinas");
 
         //loop que imprimi na tela as disciplinas cadastradas
-        std::cout << std::setw(40) << std::setfill('=') << "" << std::endl;
-        std::cout << std::setw(15) << std::setfill(' ') << std::left << "Informações disciplinas" << std::setw(25) << std::setfill(' ') << std::right << "" << std::endl;
-        std::cout << std::setw(40) << std::setfill('=') << "" << std::endl;
+
         for(int i = 0; i<disciplinas.size(); i++){
             std::cout << "- " << disciplinas[i]._nome << "(" << disciplinas[i]._codigo << ")" << std::endl;
             std::cout << "    Prédio - " << disciplinas[i]._predio << ", sala " << disciplinas[i]._sala << std::endl;
@@ -245,4 +253,80 @@
     //getDisciplina
     const std::vector<Rotina::Disciplina>& Rotina::getDisciplinas() const {
         return disciplinas;
+    }
+        
+    //adicionar disciplina no arquivo
+    void Rotina::salvarDisciplinasEmArquivo(const std::string& nomeArquivo) const {
+        std::ofstream arquivo(nomeArquivo);
+
+        if (!arquivo.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo para escrita.\n";
+            return;
+        }
+
+        // Escrever as disciplinas no formato CSV
+        for (const auto& disciplina : disciplinas) {
+            arquivo << "Código:" << disciplina._codigo << ";"
+                    << "Nome:" << disciplina._nome << ";"
+                    << "Prédio:" << disciplina._predio << ";"
+                    << "Sala:" << disciplina._sala << ";"
+                    << "Horários:";
+
+            for (const auto& horario : disciplina.horarios) {
+                arquivo << horario._dia << " " << horario._hora << " ";
+            }
+
+            arquivo << ";\n";
+        }
+
+        arquivo.close();
+    }
+
+    //função que carrega um arquivo, fazendo sua leitura 
+    void Rotina::carregarDisciplinasDeArquivo(const std::string& nomeArquivo) {
+        disciplinas.clear(); 
+
+        std::ifstream arquivo(nomeArquivo);
+
+        if (!arquivo.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo para leitura.\n";
+            return;
+        }
+
+        std::string linha;
+
+        while (std::getline(arquivo, linha)) {
+            std::istringstream ss(linha);
+            std::string token;
+
+            Disciplina novaDisciplina;
+            Horario novoHorario;
+
+            while (std::getline(ss, token, ';')) {
+                std::istringstream tokenStream(token);
+                std::string chave, valor;
+                std::getline(tokenStream, chave, ':');
+                std::getline(tokenStream, valor);
+
+                if (chave == "Código") {
+                    novaDisciplina._codigo = valor;
+                } else if (chave == "Nome") {
+                    novaDisciplina._nome = valor;
+                } else if (chave == "Prédio") {
+                    novaDisciplina._predio = valor;
+                } else if (chave == "Sala") {
+                    novaDisciplina._sala = valor;
+                } else if (chave == "Horários") {
+                    std::istringstream horarioStream(valor);
+                    while (horarioStream >> novoHorario._dia >> novoHorario._hora) {
+                        novaDisciplina.horarios.push_back(novoHorario);
+                    }
+                }
+            }
+
+            //incluir arquivo no vetor disciplina
+            disciplinas.push_back(novaDisciplina);
+        }
+
+        arquivo.close();
     }
