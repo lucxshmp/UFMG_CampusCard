@@ -1,7 +1,16 @@
 #include <iostream>
 #include <string> 
+#include <cstdlib>
 #include "main_menu.hpp"
 #include "menu.hpp"
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
 
 
 namespace media::ui{
@@ -30,6 +39,7 @@ namespace media::ui{
             case 1:
                 // Lógica para a opção 1 - Transacoes RU e Saldo
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 ru.render();
                 return new MenuTransacoesRU(); 
                 break;
@@ -37,6 +47,7 @@ namespace media::ui{
             case 2:
                 // Lógica para a opção 2 - Onibus, Vans e Transporte Geral
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 transporte.render();
                 return new MenuOnibusVans();
                 break; 
@@ -44,6 +55,7 @@ namespace media::ui{
             case 3:
                 // Lógica para a opção 3 - Grade Semanal
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 grade.render();
                 return new MenuGrade(); 
                 break;
@@ -51,6 +63,7 @@ namespace media::ui{
             case 4:
                 // Lógica para a opção 4 - Rotina e Calendario
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 rotina.render();
                 return new MenuRotinaCalendarios(); 
                 break;
@@ -58,6 +71,7 @@ namespace media::ui{
             case 5:
                 // Lógica para a opção 5 - Salas
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 salas.render();
                 return new MenuSalas(); 
                 break;
@@ -65,6 +79,7 @@ namespace media::ui{
             case 6:
                 // Lógica para a opção 6 - Mapas e Departamentos
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 dep.render();
                 return new MenuDepartamentos(); 
                 break;
@@ -72,13 +87,14 @@ namespace media::ui{
             case 7:
                 // Lógica para a opção 7 - Operacoes com a Carteira de Estudante
                 // Crie e retorne uma instância do menu correspondente, se aplicável
+                system(CLEAR_SCREEN);
                 carteirinha.render();
                 return new MenuCarteirinha();
                 break;
 
             default:
                 // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+                std::cout << "Opcao invalida!\n" << std::endl;
                 return nullptr;
         }
     }
