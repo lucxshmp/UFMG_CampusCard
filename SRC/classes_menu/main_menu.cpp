@@ -30,7 +30,7 @@ namespace media::ui{
         media::ui::MenuTransacoesRU ru;
         media::ui::MenuOnibusVans transporte;
         media::ui::MenuGrade grade;
-        media::ui::MenuRotinaCalendarios rotina;
+        media::ui::MenuEventos eventos;
         media::ui::MenuSalas salas;
         media::ui::MenuDepartamentos dep;
         media::ui::MenuCarteirinha carteirinha;
@@ -64,8 +64,8 @@ namespace media::ui{
                 // Lógica para a opção 4 - Rotina e Calendario
                 // Crie e retorne uma instância do menu correspondente, se aplicável
                 system(CLEAR_SCREEN);
-                rotina.render();
-                return new MenuRotinaCalendarios(); 
+                eventos.render();
+                return new MenuEventos(); 
                 break;
 
             case 5:
