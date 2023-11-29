@@ -4,7 +4,14 @@
 #include <string>
 #include <chrono>
 #include <vector>
+#pragma once
+
+#include <iostream>
+#include <string>
+#include <chrono>
+#include <vector>
 #include <sstream>
+#include <iomanip>
 
 
 class Validacao{
@@ -51,5 +58,26 @@ class Validacao{
              * @return retorna o horario associado ao número
              */
             std::string transformarEmHora(int hora);
+
+            /**
+             * @brief função que confere se o formato digitado pelo usuário é DD-MM-AA
+             * @param data recebe a data cadastrada
+             * @return verdadeiro ou falso 
+             */
+            bool validarFormatoData(const std::string& data) const;
+
+            /**
+             * @brief função que confere se o formato digitado pelo usuário é HH:MM
+             * @param hora recebe a hora cadastrada
+             * @return verdadeiro ou falso 
+             */
+            bool validarFormatoHora(const std::string& hora) const;
+
+            /**
+             * @brief função que imprime um quadro para cada sessão
+             * @param sessao nome da sessao
+             */
+            void tituloSessao(const std::string& sessao) const;
+
 
 };

@@ -1,14 +1,15 @@
 #pragma once
 
 #include <string>
-#include <iostream>
 #include <chrono>
+#include <iostream>
+#include <algorithm>
 #include <vector>
 
 class Eventos{
 
     private:
-        
+
         //informações das tarefas
         std::string _nome;
         std::string _descricao;

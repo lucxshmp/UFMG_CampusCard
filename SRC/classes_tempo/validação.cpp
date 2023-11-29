@@ -9,9 +9,7 @@
             std::cout << "Escolha um valor válido (S/N): ";
             std::cin >> escolha;
         }
-
         return escolha;
-
     }
 
 
@@ -19,7 +17,7 @@
 
         //loop
         while (true){
-            std::cout << "Escolha uma opção válida: ";
+
             std::cin >> escolha;
 
             if(std::cin.fail() || escolha < 1 || escolha > 5){
@@ -28,44 +26,40 @@
                 std::cin.clear();
 
                 // Descartar entrada inválida
-                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-                std::cout << "Entrada inválida. Digite um número entre 1 e 5." << std::endl;
+                std::cout << "(!) Entrada inválida\n (!) Digite um número entre 1 e 5." << std::endl;
 
             }else{
                 break;
             }
         }
-
     return escolha;
-
     }
 
     //confere se o número digitado corresponde aos dias da semana
     int Validacao::validarDia(int escolha){
 
-    //loop
-    while (std::cin.fail() || escolha < 1 || escolha > 6){
-        std::cout << "Entrada inválida. Digite um número entre 1 e 6: ";
-        std::cin >> escolha;
+        //loop
+        while (std::cin.fail() || escolha < 1 || escolha > 6){
+            std::cout << "(!) Entrada inválida.\n (!) Digite um número entre 1 e 6: ";
+            std::cin >> escolha;
 
-        if (std::cin.fail()) {
+            if (std::cin.fail()) {
 
-            // Limpar o estado de erro
-            std::cin.clear();
+                // Limpar o estado de erro
+                std::cin.clear();
 
-            // Descartar entrada inválida
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                // Descartar entrada inválida
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            }
         }
-    }
 
-    return escolha;
-}
+        return escolha;
+    }
 
     //confere se o número digitado corresponde aos horários do noturno
     int Validacao::validarHorario(int escolha){ 
         while (std::cin.fail() || escolha < 1 || escolha > 2) {
-            std::cout << "Entrada inválida. Digite um número entre 1 e 2: ";
+            std::cout << "(!) Entrada inválida.\n (!) Digite 1 ou 2: ";
             std::cin >> escolha;
 
             if (std::cin.fail()) {
@@ -117,3 +111,53 @@
                 return "Hórario inválido";
         }
     }
+
+    //validar se o formato da data é DD-MM-AAAA
+    bool Validacao::validarFormatoData(const std::string& data) const{
+        std::tm tm = {};
+        std::istringstream dateStream(data);
+        dateStream >> std::get_time(&tm, "%d-%m-%Y");
+
+        if (dateStream.fail()){
+            std::cout << "(!) Entrada inválida. " << std::endl << "(!) ";
+        }
+        return !dateStream.fail();
+    }
+
+    //validar se o formato da hora é HH:MM
+    bool Validacao::validarFormatoHora(const std::string& hora) const{
+        std::tm tm = {};
+        std::istringstream timeStream(hora);
+        timeStream >> std::get_time(&tm, "%H:%M");
+
+        if (timeStream.fail()){
+            std::cout << "(!) Entrada inválida. " << std::endl << "(!) ";
+        }
+        return !timeStream.fail();
+    }
+
+
+//imprimir título sessão
+void Validacao::tituloSessao(const std::string& sessao) const{
+
+    const int larguraTotal = 60;  
+    const int larguraTitulo = sessao.length();  
+
+    std::cout << std::endl;
+
+    std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
+
+    std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
+
+    //centralizar título 
+    int espacosAntes = (larguraTotal - larguraTitulo) / 2;
+    int espacosDepois = larguraTotal - larguraTitulo - espacosAntes;
+    std::cout << std::setw(espacosAntes) << std::setfill(' ') << "" << sessao
+              << std::setw(espacosDepois) << std::setfill(' ') << "" << std::endl;
+
+    std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
+
+    std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
+
+    std::cout << std::endl;
+}
