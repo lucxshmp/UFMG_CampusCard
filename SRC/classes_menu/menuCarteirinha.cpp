@@ -14,16 +14,16 @@ namespace media::ui{
         media::ui::MenuCarteirinha carteirinha;
         switch (option) {
             case 1:
-                
-                CarteiraEstudante::GerarCarteiraDigital(const char*); 
+                const char* novaCarteirinhaDigi;
+                CarteiraEstudante::GerarCarteiraDigital(novaCarteirinhaDigi); 
                 std::cout << "Carteirinha Digital criada com sucesso!\n";
                 return nullptr; 
 
             case 2:
-                
-                CarteiraEstudante::obterStatusValidade();   
-                std::cout << "Ate aqui deu certo\n";
-                return nullptr; 
+                bool validadeAtual;
+                validadeAtual = CarteiraEstudante::obterStatusValidade();  
+                std::cout << "A validade da carteirinha fisica e: " << (validadeAtual ? "valida" : "invalida") << std::endl;
+                return nullptr;
 
             case 3:
                 std::cout << "Digite 0 para invalidar a carteirinha ou 1 para validá-la\n";
