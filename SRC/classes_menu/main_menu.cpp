@@ -22,7 +22,7 @@ namespace media::ui{
         _options.push_back("3 - Grade Semanal");
         _options.push_back("4 - Rotina e Calendario");
         _options.push_back("5 - Salas");
-        _options.push_back("6 - Mapas e Departamentos");
+        _options.push_back("6 - Mapas");
         _options.push_back("7 - Operacoes com a Carteira de Estudante");
     }
 
@@ -32,7 +32,7 @@ namespace media::ui{
         media::ui::MenuGrade grade;
         media::ui::MenuEventos eventos;
         media::ui::MenuSalas salas;
-        media::ui::MenuDepartamentos dep;
+        media::ui::MenuMapas mapas;
         media::ui::MenuCarteirinha carteirinha;
         
         switch (option) {
@@ -77,11 +77,11 @@ namespace media::ui{
                 break;
                 
             case 6:
-                // Lógica para a opção 6 - Mapas e Departamentos
+                // Lógica para a opção 6 - Mapas
                 // Crie e retorne uma instância do menu correspondente, se aplicável
                 system(CLEAR_SCREEN);
-                dep.render();
-                return new MenuDepartamentos(); 
+                mapas.render();
+                return new MenuMapas(); 
                 break;
 
             case 7:
