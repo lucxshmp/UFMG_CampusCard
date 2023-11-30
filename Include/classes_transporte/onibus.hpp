@@ -1,45 +1,30 @@
+// onibus.hpp
+
 #pragma once
 
 #include <string>
 #include <chrono>
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <ctime>
 
-class Onibus{
+struct HorarioOnibus {
+    std::string placa;
+    std::chrono::system_clock::time_point horario;
+};
 
-    private:
+class Onibus {
+private:
+    std::string linha;
+    std::string placa;
+    std::string marca;
+    std::string tipo;
 
-        //informações do onibus
-        int linha;
-        int placa;
-        int marca;
-        int tipo;
+public:
+    std::vector<HorarioOnibus> horarios;
 
-    public:
-
-        /**
-         * @brief função que permite editar as tarefas
-         * @param tarefas vetor dos dados das tarefas
-         */
-        void cadastrarOnibus();
-
-        /**
-         * @brief função que exibe o onibus cadastrado
-         */
-        void exibirInformacao();
-
-        /**
-         * @brief função que exibe a lista de onibus cadastrados
-         */
-        void exibirOnibusCadastrados();
-
-        /**
-         * @brief função que que permite editar adicionar disciplinas em um vetor
-         * @param tarefas vetor dos dados das tarefas
-         */
-
-        void editarOnibus();
-
-        
+    void cadastrarOnibus();
+    void exibirInformacao() const;
+    void exibirHorarios();
+    const std::vector<HorarioOnibus>& getHorarios() const;
 };
