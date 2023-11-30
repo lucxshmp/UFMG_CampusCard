@@ -1,15 +1,17 @@
 #pragma once 
 
 #include "menu.hpp"
+#include "MapasCampus.hpp"
+#include "MapasInterno.hpp"
 #include <string>
 
 namespace media::ui {
-    class MenuDepartamentos : public Menu {
+    class MenuMapas : public Menu {
     public:
         ///@brief: constrói um menu principal 
-        MenuDepartamentos();
+        MenuMapas();
 
-        /// @brief Constrói próximo menu (criação de conta ou login)
+        /// @brief Constrói próximo menu (mapas dos campi ou de interno)
         /// @return O próximo menu, a partir da seleção do usuário.
         Menu *next(unsigned option) override;
 
