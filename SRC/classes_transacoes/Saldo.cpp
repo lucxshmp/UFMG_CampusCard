@@ -8,33 +8,33 @@
 #include "Saldo.hpp"
 
 
-Saldo::Saldo(int idUsuario, BancoDeDados &banco) : saldo(banco.recupera_saldo_inicial(idUsuario)) {}
+Saldo::Saldo(long int _matricula, BancoDeDados &banco) : saldo_atual(banco.recupera_saldo_inicial(_matricula)) {}
 
 void Saldo::adicionar_saldo(double valor) {
-    saldo += valor;
+    saldo_atual += valor;
 }
 
-void Saldo::diminuir_saldo(int nivel_fump) {
-    switch (nivel_fump){
+void Saldo::diminuir_saldo(int _fump) {
+    switch (_fump){
         case 2:
-            saldo-= 1.0;
+            saldo_atual-= 1.0;
             break;
         case 3:
-            saldo-= 1.0;
+            saldo_atual-= 1.0;
             break;
         case 4:
-            saldo -=2.0;
+            saldo_atual -=2.0;
             break;
         case 5:
-            saldo-=2.90;
+            saldo_atual-=2.90;
             break;
         case 6:
-            saldo-=5.60;
+            saldo_atual-=5.60;
             break;
     }
     
 }
 
-double Saldo::exibe_saldo() const {
-    return saldo;
+double Saldo::retornar_saldo_atual() const {
+    return saldo_atual;
 }

@@ -2,18 +2,17 @@
 #define SALDO_HPP
 #include <iostream>
 #include "SimulaBancodedados.hpp"
+#include "usuario.hpp"
 
 class Saldo {
     private: 
         double saldo_atual;
-        int nivel_fump;
 
     public:
-        Saldo(int idUsuario, BancoDeDados &banco); 
-        void diminuir_saldo(int nivel_fump, double valor);
+        Saldo(long int _matricula, BancoDeDados &banco); 
+        void diminuir_saldo(int _fump);
         void adicionar_saldo(double valor);
-        double exibe_saldo() const; 
-
+        double retornar_saldo_atual() const; 
 
 };
 #endif 
