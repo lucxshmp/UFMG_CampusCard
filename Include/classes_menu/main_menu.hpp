@@ -3,7 +3,7 @@
 #include "menu.hpp"
 #include <string>
 #include "menuGradeSemanal.hpp"
-#include "menuMapasDepartamentos.hpp"
+#include "menuMapas.hpp"
 #include "menuOnibusVans.hpp"
 #include "menuEventos.hpp"
 #include "menuSalas.hpp"
