@@ -11,6 +11,8 @@ BancoDeDados::BancoDeDados() {
         {matricula + 2, 100.0},
         {matricula +3, 100.0},
         {matricula +4, 100.0},
+
+        
         
     };
 }
