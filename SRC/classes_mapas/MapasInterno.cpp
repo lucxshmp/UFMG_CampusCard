@@ -1,20 +1,11 @@
 #include "menuMapas.hpp"
 #include "MapasInterno.hpp"
-#include "mapa.hpp"
+#include "redirecionamento.hpp"
 #include <iostream>
 
 
 namespace media::ui{
-
-    Mapa mapaLinha1("https://drive.google.com/file/d/1M3d3_lgyRktZz90pcj8ekznKGNTqKmRT/view?usp=sharing");
-    Mapa mapaLinha2("https://drive.google.com/file/d/1WgDHK03ea96Hhbru_if_Rc0zR9koYIAL/view?usp=sharing");
-    Mapa mapaLinha3("https://drive.google.com/file/d/1KJwbXhSZNrWH7TMluClw_5wCeQ2cCzsX/view?usp=sharing");
-    Mapa mapaLinha31("https://drive.google.com/file/d/1n4kn8K9PBJAj9gtt4HshPjHtI7C9ihV4/view?usp=sharing");
-    Mapa mapaLinha4("https://drive.google.com/file/d/1HDOn3zstYrDuR2HyvI-wU6eBSjbUG5Gp/view?usp=sharing");
-    Mapa mapaLinha41("https://drive.google.com/file/d/1SQAc54Zsahf5R-i045M4EohlWcE_uoy1/view?usp=sharing");
-    Mapa mapaLinha42("https://drive.google.com/file/d/1W-lXtkE-hjOnjnnaJ_pDzggJUZdZX1wG/view?usp=sharing");
-    Mapa mapaLinhaSabado("https://drive.google.com/file/d/1wp3S5OFTT_vGeqlX-SzXHW4RwCoTqkeN/view?usp=sharing");
-    
+      
 /// @brief construtor com todas as opcoes do menu principal 
     MapasInterno::MapasInterno(){
         _title = "Mapas da UFMG - Pontos Interno";
@@ -31,43 +22,35 @@ namespace media::ui{
     Menu *MapasInterno::next(unsigned option) {
         switch (option) {
             case 1:
-                mapaLinha1.exibirMapa();
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1M3d3_lgyRktZz90pcj8ekznKGNTqKmRT/view?usp=sharing");
                 return nullptr; 
 
             case 2:
-                mapaLinha2.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1WgDHK03ea96Hhbru_if_Rc0zR9koYIAL/view?usp=sharing");
                 return nullptr;
                  
             case 3:
-                mapaLinha3.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1KJwbXhSZNrWH7TMluClw_5wCeQ2cCzsX/view?usp=sharing");
                 return nullptr;
 
             case 4:
-                mapaLinha31.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1n4kn8K9PBJAj9gtt4HshPjHtI7C9ihV4/view?usp=sharing");
                 return nullptr;
                  
             case 5:
-                mapaLinha4.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1HDOn3zstYrDuR2HyvI-wU6eBSjbUG5Gp/view?usp=sharing");
                 return nullptr;
 
             case 6:
-                mapaLinha41.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1SQAc54Zsahf5R-i045M4EohlWcE_uoy1/view?usp=sharing");
                 return nullptr;
                  
             case 7:
-                mapaLinha42.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1W-lXtkE-hjOnjnnaJ_pDzggJUZdZX1wG/view?usp=sharing");
                 return nullptr;
 
             case 8:
-                mapaLinhaSabado.exibirMapa();    
-                std::cout << "Abrindo no navegador...\n";
+                Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1wp3S5OFTT_vGeqlX-SzXHW4RwCoTqkeN/view?usp=sharing");
                 return nullptr;
 
             default:
