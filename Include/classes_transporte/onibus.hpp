@@ -6,18 +6,19 @@
 #include <vector>
 #include <ctime>
 
+// Função para validar o formato da hora
+bool validarFormatoHora(const std::string& horaStr);
+
 struct HorarioOnibus {
     std::chrono::system_clock::time_point horario;
-    std::string placa;
+
     std::tm tmObj;
+    std::string placa;  // Adicionando o membro 'placa'
     std::string tipo;
 
     // Construtor padrão
-    HorarioOnibus() : horario(), placa(), tmObj(), tipo() {}
+    HorarioOnibus() : horario(std::chrono::system_clock::now()), tipo("") {}
 
-    // Construtor para inicializar membros diretamente
-    HorarioOnibus(std::chrono::system_clock::time_point horario, const std::string& placa, const std::tm& tmObj, const std::string& tipo)
-        : horario(horario), placa(placa), tmObj(tmObj), tipo(tipo) {}
 };
 
 class Onibus {
@@ -28,18 +29,21 @@ private:
     std::string tipo;
     std::string placaAtual;
 
+
+    std::vector<HorarioOnibus> horarios;  // Modificado para armazenar HorarioOnibus
+
     void salvarOnibus() const;
     void cadastrarOnibusNovo();
 
     std::string formatarOnibus(const HorarioOnibus& horario) const;
 
 public:
-    std::vector<HorarioOnibus> horarios;
-
     void cadastrarOnibus();
     void exibirInformacao() const;
     void exibirHorarios() const;
-    void adicionarHorario();
+
+    void cadastrarHorarios(HorarioOnibus& novoHorario);
+
     void editarOnibus();
     void exibirOnibusCadastrados() const;
     void carregarOnibus();
