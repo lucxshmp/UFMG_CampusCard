@@ -26,3 +26,6 @@ void Transacoes::deposito(){
         std::cout<<"Houve um erro no deposito"<<std::endl;
     }
 }
+void Transacoes::consultar_saldo(){
+    std::cout<<"Saldo Atual: "<<saldo.retornar_saldo_atual()<<std::endl;
+}
