@@ -19,15 +19,14 @@ void Onibus::cadastrarOnibus() {
     std::cout << "> Digite a marca do ônibus: ";
     std::getline(std::cin, marca);
 
-HorarioOnibus novoHorario;
-    novoHorario.horario = std::chrono::system_clock::now();
-    novoHorario.placa = placa;
-    novoHorario.tmObj = {}; // Isso inicializa todos os membros de tmObj para zero
-    horarios.push_back(novoHorario);
+  HorarioOnibus novoHorario;
+      novoHorario.horario = std::chrono::system_clock::now();
+      novoHorario.tmObj = {};
 
-    // Finalmente, salve os ônibus
-    salvarOnibus();
-}
+      cadastrarHorarios(novoHorario);
+
+      salvarOnibus();
+  }
 
 // função para exibir as informações cadastradas do onibus
   void Onibus::exibirInformacao() const {
@@ -39,57 +38,58 @@ HorarioOnibus novoHorario;
       
   }
 
-  void Onibus::exibirHorarios() const {
-      std::cout << "Horários dos ônibus cadastrados:" << std::endl;
+void Onibus::exibirHorarios() const {
+    std::cout << "Horários dos ônibus cadastrados:" << std::endl;
 
-      for (const auto& horario : horarios) {
-          std::time_t tempoEmTimeT = std::chrono::system_clock::to_time_t(horario.horario);
-          std::tm* localTime = std::localtime(&tempoEmTimeT);
+    for (const auto& horario : horarios) {
+        // Converter tm para time_t
+        std::time_t tempoEmTimeT = std::mktime(const_cast<std::tm*>(&horario.tmObj));
 
-          if (localTime) {
-              std::cout << std::put_time(localTime, "%H:%M:%S") << std::endl;
-          } else {
-              std::cout << "Erro ao converter tempo para struct tm." << std::endl;
-          }
-      }
-  }
+        // Verificar se a conversão foi bem-sucedida
+        if (tempoEmTimeT == -1) {
+            std::cout << "Erro ao converter tempo para struct tm." << std::endl;
+        } else {
+            std::tm* localTime = std::localtime(&tempoEmTimeT);
 
-  //função que permite cadastrar um novo horário
-void Onibus::adicionarHorario() {
-    // Exibir ônibus cadastrados para que o usuário escolha a placa
-    exibirOnibusCadastrados();
-
-    // Permita que o usuário selecione a placa do ônibus
-    std::cout << "> Digite a placa do ônibus para adicionar um novo horário: ";
-    std::string placaEscolhida;
-    std::getline(std::cin, placaEscolhida);
-
-    // Verificar se a placa escolhida está cadastrada
-    auto it = std::find_if(horarios.begin(), horarios.end(), [&placaEscolhida](const HorarioOnibus& horario) {
-        return horario.placa == placaEscolhida;
-    });
-
-    if (it != horarios.end()) {
-        // Permita que o usuário informe um novo horário
-        std::cout << "> Digite o novo horário (formato HH:MM:SS): ";
-        std::tm novoHorarioTM = {};
-
-        while (!(std::cin >> std::get_time(&novoHorarioTM, "%T")) || std::cin.peek() != '\n') {
-            std::cout << "Entrada inválida. Digite novamente: ";
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            if (localTime) {
+                std::cout << std::put_time(localTime, "%H:%M:%S") << std::endl;
+            } else {
+                std::cout << "Erro ao converter tempo para struct tm." << std::endl;
+            }
         }
+    }
+}
 
-        // Converta o novo horário para std::chrono::system_clock::time_point
-        auto novoHorario = std::chrono::system_clock::from_time_t(std::mktime(&novoHorarioTM));
+//função que permite cadastrar um novo horário
+void Onibus::cadastrarHorarios(HorarioOnibus& novoHorario) {
+    char resposta;
+
+    do {
+        std::string horaStr;
+
+        // Cadastro do horário, porém com limitação.
+        do {
+            std::cout << "    > Digite o horário de saída do ônibus (formato: HH:MM): ";
+            std::getline(std::cin, horaStr);
+            novoHorario.tmObj.tm_hour = std::stoi(horaStr);
+
+        } while (!validarFormatoHora(horaStr));
 
         // Adicione o novo horário ao vetor de horários
-        it->horario = novoHorario;
+        horarios.push_back(novoHorario);
 
-        std::cout << "Novo horário cadastrado com sucesso para o ônibus com placa " << placaEscolhida << "!" << std::endl;
-    } else {
-        std::cout << "Ônibus com placa " << placaEscolhida << " não encontrado." << std::endl;
-    }
+        // Perguntar ao usuário se deseja cadastrar um novo horário
+        do {
+            std::cout << "Deseja cadastrar um novo horário? (S/N): ";
+            std::cin >> resposta;
+            std::cin.ignore(); // Limpar o buffer do teclado
+
+            if (resposta != 'S' && resposta != 's' && resposta != 'N' && resposta != 'n') {
+                std::cout << "Opção inválida. Digite S para Sim ou N para Não." << std::endl;
+            }
+        } while (resposta != 'S' && resposta != 's' && resposta != 'N' && resposta != 'n');
+
+    } while (resposta == 'S' || resposta == 's');
 }
 
 // função que permite alterar as informações de um ônibus
@@ -163,14 +163,14 @@ void Onibus::exibirOnibusCadastrados() const {
             std::tm* localTime = std::localtime(&tempoEmTimeT);
 
             if (localTime) {
-                std::cout << "Placa: " << horario.placa << " - Tipo: " << tipo << " - Horário: " << std::put_time(localTime, "%H:%M:%S") << std::endl;
+                std::cout << "Placa: " << horario.placa << " - Tipo: " << horario.tipo
+                          << " - Horário: " << std::put_time(localTime, "%H:%M:%S") << std::endl;
             } else {
                 std::cout << "Erro ao converter tempo para struct tm." << std::endl;
             }
         }
     }
 }
-
 
   // Função para carregar os ônibus do arquivo
 void Onibus::carregarOnibus() {
@@ -247,9 +247,39 @@ void Onibus::cadastrarOnibusNovo() {
     std::getline(std::cin, marca);
 
     // Adicione o novo ônibus à lista de horários
-  horarios.push_back({std::chrono::system_clock::now(), placa, std::tm(), tipo});
-
+  /*horarios.push_back({std::chrono::system_clock::now(), placa, {}, std::tm(), tipo});
+  */
 
     // Finalmente, salve os ônibus
     salvarOnibus();
+}
+
+bool validarFormatoHora(const std::string& horaStr) {
+    // Verifica se a string tem o formato esperado (HH:MM)
+    if (horaStr.size() != 5) {
+        std::cout << "Formato incorreto. O horário deve ter 5 caracteres." << std::endl;
+        return false;
+    }
+
+    if (horaStr[2] != ':') {
+        std::cout << "Formato incorreto. O terceiro caracter deve ser ':'." << std::endl;
+        return false;
+    }
+
+    // Verifica se os caracteres antes e depois do ':' são dígitos
+    if (!std::isdigit(horaStr[0]) || !std::isdigit(horaStr[1]) || !std::isdigit(horaStr[3]) || !std::isdigit(horaStr[4])) {
+        std::cout << "Formato incorreto. Os caracteres antes e depois do ':' devem ser dígitos." << std::endl;
+        return false;
+    }
+
+    // Verifica se as horas e minutos estão dentro dos limites corretos
+    int horas = std::stoi(horaStr.substr(0, 2));
+    int minutos = std::stoi(horaStr.substr(3, 2));
+
+    if (horas < 0 || horas > 23 || minutos < 0 || minutos > 59) {
+        std::cout << "Horário incorreto. As horas devem estar entre 00 e 23, e os minutos entre 00 e 59." << std::endl;
+        return false;
+    }
+
+    return true; // O formato do horário está correto
 }
