@@ -38,5 +38,4 @@ public:
     void editarOnibus();
     void exibirOnibusCadastrados() const;
     void carregarOnibus();
->>>>>>> bcb8f7988da2e1da497bcc667c0252fb752402e3
 };
