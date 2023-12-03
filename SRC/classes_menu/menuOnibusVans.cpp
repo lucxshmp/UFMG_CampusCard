@@ -5,32 +5,35 @@
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
     MenuOnibusVans::MenuOnibusVans(){
-        _title = "Transporte e locomocao";
-        _options.push_back("1 - Cadastrar novo onibus");
-        _options.push_back("2 - Exibir Lista dos Onibus");
-        _options.push_back("3 -  ");
+        _title = "\n\n********** MENU ONIBUS **********\n\n ";
+        _title = "Escolha uma opção: \n";
+        _options.push_back("1. Cadastrar ônibus");
+        _options.push_back("2. Exibir ônibus cadastrados");
+        _options.push_back("3. Editar ônibus");
+        _options.push_back("0. Sair");
+        std::cout << "> ";
     }
 
     Menu *MenuOnibusVans::next(unsigned option) {
         switch (option) {
             case 1:
-                
-                onibus.cadastrarOnibus();
-                onibus.exibirInformacao()
+                  meuOnibus.cadastrarOnibus();
+                  meuOnibus.exibirInformacao();
                 return nullptr;
+          
             case 2:
 
-                onibus.exibirOnibusCadastrados();
-                return MenuOnibusVans();
+               meuOnibus.exibirOnibusCadastrados();
+              return MenuOnibusVans();
 
-            case 3:
-                
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo    
-                std::cout << "Ate aqui deu certo\n";
+            case 3: 
+              meuOnibus.editarOnibus();
                 return nullptr; 
-           
+
+            case 0:
+            std::cout << "Saindo..." << std::endl;
+            break;
+
             default:
                 // Opção inválida, retorne nullptr ou um menu padrão
                 std::cout << "Opcao invalida!" << std::endl;
@@ -38,3 +41,4 @@ namespace media::ui{
         }
     }
 };
+
