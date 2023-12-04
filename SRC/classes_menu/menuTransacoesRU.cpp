@@ -28,8 +28,6 @@ namespace media::ui{
     Menu *MenuTransacoesRU::next(unsigned option) {
         
         switch (option) {
-<<<<<<< HEAD
-=======
 
             case 0:
                     ux = system(CLEAR_SCREEN);
@@ -38,7 +36,6 @@ namespace media::ui{
                     interface.mensagemSaida();
                     return nullptr;
 
->>>>>>> 6c7af2ac23d0bdfc39a74dda8e9c1032467ed05b
             case 1:
                 // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
                 //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
