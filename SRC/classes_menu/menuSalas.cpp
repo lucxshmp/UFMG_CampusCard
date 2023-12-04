@@ -40,11 +40,11 @@ namespace media::ui{
                 break;
                 
             default:
-                // Opcao invalida, retorne nullptr ou um menu padrao
-                std::cout << "Opcao invalida!" << std::endl;
-                salas.render();
-                return new MenuSalas;
+                // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
+                return nullptr;
         }
-    } while (option != 2)
+    } while (option < 1 || option > 2);
     } 
 };

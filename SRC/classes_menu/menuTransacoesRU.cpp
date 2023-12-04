@@ -15,11 +15,10 @@ namespace media::ui{
     }
 
     Menu *MenuTransacoesRU::next(unsigned option) {
+        do{
         switch (option) {
             case 1:
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo 
+                
                 std::cout<<"Informe o nivel fump (2 a 6): "<<std::endl;
                 std::cin>>nivel_fump;
                 usuario.setNivelFump(nivel_fump);
@@ -29,9 +28,6 @@ namespace media::ui{
 
             case 2:
 
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo
                 std::cout<<"Informe valor a ser depositado: "<<std::endl;
                 std::cin>>valor;   
                 transacao.set_deposito(true);
@@ -39,17 +35,17 @@ namespace media::ui{
                 return nullptr; 
 
             case 3:
-                
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo    
+                    
                 transacao.consultar_saldo();
                 return nullptr; 
            
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+            
+                // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while (option < 1 || option > 3);
     }
 };

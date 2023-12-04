@@ -12,18 +12,19 @@ namespace media::ui{
 
     Menu *MenuCarteirinha::next(unsigned option) {
         media::ui::MenuCarteirinha carteirinha;
+        do {
         switch (option) {
             case 1:
                 const char* novaCarteirinhaDigi;
                 CarteiraEstudante::GerarCarteiraDigital(novaCarteirinhaDigi); 
                 std::cout << "Carteirinha Digital criada com sucesso!\n";
-                return nullptr; 
+                return new MenuCarteirinha(); 
 
             case 2:
                 bool validadeAtual;
                 validadeAtual = CarteiraEstudante::obterStatusValidade();  
                 std::cout << "A validade da carteirinha fisica e: " << (validadeAtual ? "valida" : "invalida") << std::endl;
-                return nullptr;
+                return new MenuCarteirinha();
 
             case 3:
                 std::cout << "Digite 0 para invalidar a carteirinha ou 1 para validá-la\n";
@@ -43,13 +44,14 @@ namespace media::ui{
                     std::cout << "Status alterado com sucesso\n";
                 }
                 
-                return nullptr; 
+                return new MenuCarteirinha(); 
 
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
-                carteirinha.render();
-                return new MenuCarteirinha();
+                // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
+                return nullptr;
         }
+        } while (option < 0 || option > 3);
     }
 };

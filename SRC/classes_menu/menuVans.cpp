@@ -4,7 +4,7 @@
 
 namespace media::ui {
     /// @brief construtor com todas as opcoes do menu principal 
-        MenuVans::MenuVans(){ {
+        MenuVans::MenuVans(){
         _title = "\n\n********** MENU VANS **********\n\n ";
         _title = "Escolha uma opção: \n";
         _options.push_back("1. Cadastrar van");
@@ -15,6 +15,7 @@ namespace media::ui {
     }
 
         Menu *MenuVans::next(unsigned option) {
+        do {
         switch (option) {
             case 1:
                 minhaVan.cadastrarVan();
@@ -31,12 +32,14 @@ namespace media::ui {
 
             case 0:
                 std::cout << "Saindo..." << std::endl;
-                break;
+                return nullptr;
 
-            default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+           default:
+                 // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while ( option < 0 || option > 3);
     }
 };

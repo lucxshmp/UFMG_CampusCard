@@ -26,6 +26,7 @@ namespace media::ui{
     Menu *MenuTransporte::next(unsigned option) {
         media::ui::MenuOnibus onibus;
         media::ui::MenuVans vans;
+        do{
         switch (option) {
             case 1:
                 system(CLEAR_SCREEN);
@@ -44,10 +45,12 @@ namespace media::ui{
             break;
 
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+                 // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while (option < 0 || option > 2);
     }
 };
 
