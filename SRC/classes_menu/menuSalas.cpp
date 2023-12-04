@@ -1,43 +1,49 @@
 #include "menuSalas.hpp"
+#include "SalasUteis.hpp"
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
     MenuSalas::MenuSalas(){
-        _title = "Informacoes sobre Salas";
-        _options.push_back("1 - marcar hora");
-        _options.push_back("2 - consultar data");
-        _options.push_back("3 - sei la ");
+        _title = "Menu de Salas da UFMG";
+        _options.push_back("1 - Salas Uteis");
+        _options.push_back("2 - Salas por Departamento");
     }
 
     Menu *MenuSalas::next(unsigned option) {
+        media::ui::MenuUteis uteis;
+        media::ui::MenuDepartamento depto;
+
+        do {
         switch (option) {
+            
             case 1:
-                
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo    
-                std::cout << "Ate aqui deu certo\n";
-                return nullptr;
+                // Logica para a opcao 2 - Menu de Salas Uteis
+                system(CLEAR_SCREEN);
+                uteis.render();
+                return new MenuUteis(); 
+                break;
 
             case 2:
-
-                // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo    
-                std::cout << "Ate aqui deu certo\n";
-                return nullptr;
+                // Logica para a opcao 1 - Menu de Salas por Departamento
+                system(CLEAR_SCREEN);
+                depto.render();
+                return new MenuDepartamento(); 
+                break;
                 
-            case 3:
-                
-               // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
-                //exemplo se for a opção consultar data de prova chamar uma função que faça isso 
-                //qualquer coisa usa o meu main menu de exemplo    
-                std::cout << "Ate aqui deu certo\n";
-                return nullptr;
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
+                // Opcao invalida, retorne nullptr ou um menu padrao
                 std::cout << "Opcao invalida!" << std::endl;
-                return nullptr;
+                salas.render();
+                return new MenuSalas;
         }
-    }
+    } while (option != 2)
+    } 
 };
