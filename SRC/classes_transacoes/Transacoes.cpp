@@ -5,10 +5,18 @@
 Saldo saldo;
 Usuario usuario;
 
+
 Transacoes::Transacoes(){
     confirma_pagamento=false;
     confirma_deposito=false;
 }
+void Transacoes::set_pagamento(bool pagamento){
+    confirma_pagamento= pagamento;
+}
+void Transacoes::set_deposito(bool deposito){
+    confirma_deposito= deposito;
+}
+
 void Transacoes::pagamento(){
     if (confirma_pagamento==true){
         saldo.diminuir_saldo(usuario.getNivelFump());
@@ -18,9 +26,9 @@ void Transacoes::pagamento(){
         std::cout<<"Houve um erro no pagamento"<<std::endl;
     }
 }
-void Transacoes::deposito(){
+void Transacoes::deposito(double valor){
     if (confirma_deposito==true){
-        saldo.adicionar_saldo(0); //O zero é apenas um valor qualquer para completar a lógica da transação. Será modificado.
+        saldo.adicionar_saldo(valor); //O zero é apenas um valor qualquer para completar a lógica da transação. Será modificado.
         std::cout<<"Deposito confirmado"<<std::endl;
     }
     else{
