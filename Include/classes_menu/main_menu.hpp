@@ -11,8 +11,8 @@
 #include "menuCarteirinha.hpp"
 
 
-namespace media::ui {
-    class MenuPrincipal : public Menu {
+namespace media::ui{
+    class MenuPrincipal : public Menu{
     public:
         ///@brief: constrói um menu principal 
         MenuPrincipal();

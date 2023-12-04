@@ -7,9 +7,9 @@
 
 #include <sstream>
 
-class Onibus {
+class Onibus{
 private:
-    struct HorarioOnibus {
+    struct HorarioOnibus{
         std::string placa;
         std::string tipo;
         std::string marca;

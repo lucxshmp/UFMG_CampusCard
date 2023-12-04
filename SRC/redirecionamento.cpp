@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
-void Redirecionamento::redirecionarLink(const std::string& link) {
+void Redirecionamento::redirecionarLink(const std::string& link){
     std::cout << "Redirecionando para: " << link << "\n";
 #ifdef _WIN32
     // para windows

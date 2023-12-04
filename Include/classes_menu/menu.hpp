@@ -4,8 +4,8 @@
 #include <vector> 
 #include "usuario.hpp"
 
-namespace media::ui {
-    class Menu {
+namespace media::ui{
+    class Menu{
     public: 
         /// @brief Destrutor virtual, para correta destruição de subclasses.
         virtual ~Menu() = default;

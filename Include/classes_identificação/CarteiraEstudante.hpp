@@ -7,7 +7,7 @@
 #include "usuario.hpp"
 
 
-class CarteiraEstudante {
+class CarteiraEstudante{
 public:
     CarteiraEstudante();
 

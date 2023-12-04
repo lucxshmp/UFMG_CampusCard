@@ -5,8 +5,8 @@
 #include "MapasInterno.hpp"
 #include <string>
 
-namespace media::ui {
-    class MenuMapas : public Menu {
+namespace media::ui{
+    class MenuMapas : public Menu{
     public:
         ///@brief: constrói um menu principal 
         MenuMapas();

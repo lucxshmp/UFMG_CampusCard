@@ -4,6 +4,8 @@
 
     //associa os horários das disciplinas com a grade
     void Grade_Semanal::criarGrade(Rotina &rotina){
+        
+        rotina.carregarDisciplinasDeArquivo("disciplinas.txt");
 
         Validacao validacao;
         validacao.tituloSessao("Grade de Horário");

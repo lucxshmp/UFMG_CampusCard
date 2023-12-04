@@ -1,5 +1,5 @@
 #include "validação.hpp"
-#include "rotina.hpp"
+
 
     //confere se o usuário digitou s/n ou S/N
     char Validacao::validarSN(char escolha){
@@ -137,27 +137,53 @@
     }
 
 
-//imprimir título sessão
-void Validacao::tituloSessao(const std::string& sessao) const{
+    //imprimir título sessão
+    void Validacao::tituloSessao(const std::string& sessao) const{
 
-    const int larguraTotal = 60;  
-    const int larguraTitulo = sessao.length();  
+        const int larguraTotal = 60;  
+        const int larguraTitulo = sessao.length();  
 
-    std::cout << std::endl;
+        std::cout << std::endl;
 
-    std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
+        std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
 
-    std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
+        std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
 
-    //centralizar título 
-    int espacosAntes = (larguraTotal - larguraTitulo) / 2;
-    int espacosDepois = larguraTotal - larguraTitulo - espacosAntes;
-    std::cout << std::setw(espacosAntes) << std::setfill(' ') << "" << sessao
-              << std::setw(espacosDepois) << std::setfill(' ') << "" << std::endl;
+        //centralizar título 
+        int espacosAntes = (larguraTotal - larguraTitulo) / 2;
+        int espacosDepois = larguraTotal - larguraTitulo - espacosAntes;
+        std::cout << std::setw(espacosAntes) << std::setfill(' ') << "" << sessao
+                << std::setw(espacosDepois) << std::setfill(' ') << "" << std::endl;
 
-    std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
+        std::cout << std::setw(larguraTotal) << std::setfill(' ') << "" << std::endl;
 
-    std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
+        std::cout << std::setw(larguraTotal) << std::setfill('*') << "" << std::endl;
 
-    std::cout << std::endl;
-}
+        std::cout << std::endl;
+    }
+
+
+    int Validacao::obterNumeroInteiro() {
+        while (true) {
+            std::string entrada;
+
+            // Solicita ao usuário para digitar um número
+            std::getline(std::cin, entrada);
+
+            std::stringstream ss(entrada);
+            int numero;
+
+            // Tenta extrair um número inteiro da string
+            if (ss >> numero) {
+                char resto;
+                // Tenta extrair um caractere adicional (verifica se não há caracteres adicionais)
+                if (!(ss >> resto)) {
+                    return numero;  // Retorna o número se a conversão for bem-sucedida
+                }
+            }
+
+            // Limpa a entrada inválida e pede ao usuário para tentar novamente
+            std::cout << "Entrada inválida. Por favor, digite um número inteiro válido." << std::endl;
+            std::cin.clear();
+        }
+    }

@@ -4,43 +4,52 @@
 
 
 namespace media::ui{
-/// @brief construtor com todas as opcoes do menu principal 
-    MenuEventos::MenuEventos(){
-        
-        _title = "Eventos e tarefas";
-        _options.push_back("1 - cadastrar evento ou tarefa");
-        _options.push_back("2 - editar evento ou tarefa");
-        _options.push_back("3 - exibir lista ordenada por prazo de eventos e tarefas ");
-        _options.push_back("4 - voltar ao menu principal ");
+
+    /// @brief construtor com todas as opcoes do menu principal 
+    MenuGrade::MenuGrade(){
+    
+        _title = "Grade Semanal";
+        _options.push_back("1 - Cadastrar Disciplina");
+        _options.push_back("2 - Editar Disciplina");
+        _options.push_back("3 - Visualizar disciplinas cadastradas");
+        _options.push_back("4 - Visualizar quadro de horários semanais");
+        _options.push_back("5 - Retornar ao menu principal");
 
     }
 
-    Menu *MenuEventos::next(unsigned option) {
+    Menu *MenuGrade::next(unsigned option){
         
-        std::vector<Eventos> tarefas;
-        Eventos eventos;
+        do {
+            Rotina rotina;
+            Grade_Semanal grade;
 
-        switch (option) {
-            case 1:
-                eventos.adicionarTarefas(tarefas);
-                return MenuEventos();
+            switch (option) {
+                case 1:
+                    rotina.cadastrarDisciplina();
+                    return new MenuGrade(); 
 
-            case 2:
-                eventos.editarTarefas(tarefas); 
-                return MenuEventos();
-
-            case 3:
-                eventos.exibirPorPrazo(tarefas);
-                return MenuEventos();
+                case 2:
+                    rotina.editar_disciplina();
+                    return new MenuGrade();
+                    
+                case 3:
+                    rotina.informacoes_disciplina();
+                    return new MenuGrade();
+                
+                case 4:
             
-            case 4;
-                return MenuPrincipal::MenuPrincipal();;
+                    grade.criarGrade(rotina);
+                    return new MenuGrade();
 
-            default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
-                return MenuEventos();;
+                case 5:
+                    return new MenuPrincipal();
 
+                default:
+                    // Opção inválida, retorne nullptr ou um menu padrão
+                    std::cout << "Opcao invalida!" << std::endl;
+                    return new MenuGrade();
+            }
+            while(option != 5);
         }
     }
 };

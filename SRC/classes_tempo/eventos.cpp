@@ -6,8 +6,9 @@
 #include <vector>
 
     //função que adiciona uma tarefa ao vetor tarefas
-    void Eventos::adicionarTarefas(std::vector<Eventos>& tarefas) {
+    void Eventos::adicionarTarefas(std::vector<Eventos>& tarefas){
 
+        carregarTarefasDeArquivo(tarefas, "tarefas.txt");
         //adicionar classe Validacao
         Validacao validacao;
         validacao.tituloSessao("Adicionar Tarefas");
@@ -16,23 +17,27 @@
         char cadastrarMaisTarefas;
 
         //loop para se cadastrar mais de uma tarefa
-        do {
+        do{ 
 
             //inserir dados as tarefas
             std::cout << "> Digite o nome da tarefa: ";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+
             std::getline(std::cin, _nome);
 
             std::cout << "> Digite a descrição da tarefa: ";
             std::getline(std::cin, _descricao);
 
             //validar data
-            do {
+            do{
                 std::cout << "> Digite a data de vencimento da tarefa (formato: DD-MM-AAAA): ";
                 std::getline(std::cin, _data);
             } while (!validacao.validarFormatoData(_data));
 
             //validar hora
-            do {
+            do{
                 std::cout << "> Digite a hora de vencimento da tarefa (formato: HH:MM): ";
                 std::getline(std::cin, _hora);
             } while (!validacao.validarFormatoHora(_hora));
@@ -50,16 +55,22 @@
             std::cin >> cadastrarMaisTarefas;
             
             validacao.validarSN(cadastrarMaisTarefas);
-          std::cout << std::endl;
+            std::cout << std::endl;
             if(cadastrarMaisTarefas == 's' || cadastrarMaisTarefas == 'S') std::cout << "  Cadastrar nova Tarefa" << std::endl;
             std::cin.ignore();
 
         //condição de parada do loop
         } while (cadastrarMaisTarefas == 'S' || cadastrarMaisTarefas == 's');
+
+        salvarTarefasEmArquivo(tarefas, "tarefas.txt");
+
+
     }
 
     //função que ordena a exibição da lista por prazo
-    void Eventos::exibirPorPrazo(const std::vector<Eventos>& tarefas){ 
+    void Eventos::exibirPorPrazo(std::vector<Eventos>& tarefas){ 
+
+        carregarTarefasDeArquivo(tarefas, "tarefas.txt");
 
         //adicionar classe Validacao
         Validacao validacao;
@@ -72,11 +83,10 @@
         std::sort(tarefasCopia.begin(), tarefasCopia.end()); 
 
         //chama a função que imprime
-        for (const auto& tarefas : tarefasCopia) {
+        for (const auto& tarefas : tarefasCopia){
             tarefas.displayTarefa();
         }
 
-      
     }
 
     //função que imprime a lista
@@ -89,17 +99,18 @@
                   << "Prazo: ";
 
         //analisa se o prazo já venceu
-        if (tempoRestante.first < 0) {
+        if (tempoRestante.first < 0){
             std::cout << "(!) Vencido (!)" << std::endl;
-        } else {
+        } else{
             std::cout << tempoRestante.first << " dias e " << tempoRestante.second << " horas\n";
         }
         std::cout << "-----------------------------------" << std::endl;
     }
 
     //função que permite a possibilidade de editar tarefas
-    void Eventos::editarTarefas(std::vector<Eventos>& tarefas) {
-
+    void Eventos::editarTarefas(std::vector<Eventos>& tarefas){
+        
+        carregarTarefasDeArquivo(tarefas, "tarefas.txt");
         //adicionar classe Validacao
         Validacao validacao;
         validacao.tituloSessao("Editar tarefas");
@@ -115,7 +126,7 @@
 
 
             //lista todas as tarefas cadastradas
-            for (int i = 0; i < tarefas.size(); i++) {
+            for (int i = 0; i < tarefas.size(); i++){
                 std::cout << "> Digite " << i + 1 << " para editar: " << tarefas[i]._nome << std::endl;
             }
             std::cout << std::endl;
@@ -126,7 +137,7 @@
             tarefaIndex--;
 
             //analise do indíce
-            if (tarefaIndex >= 0 && tarefaIndex < tarefas.size()) {
+            if (tarefaIndex >= 0 && tarefaIndex < tarefas.size()){
 
                 std::cout << " Escolha o atributo a ser editado:\n"
                           << "    1. Nome\n"
@@ -142,7 +153,7 @@
                 std::cout << std::endl;
 
                 //switch que altera o desejado pelo usuário
-                switch (escolha) {
+                switch (escolha){
                     case 1:
                         std::cout << "    > Digite o novo nome: ";
                         std::getline(std::cin, tarefas[tarefaIndex]._nome);
@@ -196,6 +207,8 @@
         //condição parada do loop
         }while(realizarAlteracao == 'S' || realizarAlteracao == 's');
 
+        salvarTarefasEmArquivo(tarefas, "tarefas.txt");
+
     }
 
     //função que calcula o prazo
@@ -214,7 +227,7 @@
         return {dias, horas};
     }
 
-   //pperador de comparação 
+   //operador de comparação 
     bool Eventos::operator<(const Eventos& outros) const {
         return deadline < outros.deadline;
     }
@@ -233,4 +246,76 @@
         return timePoint;
     }
 
+    //funçao que salvas as tarefas em um arquivo
+    void Eventos::salvarTarefasEmArquivo(const std::vector<Eventos>& tarefas, const std::string& nomeArquivo){
+    std::ofstream arquivo(nomeArquivo);
+
+    if (!arquivo.is_open()){
+        std::cerr << "Erro ao abrir o arquivo para escrita.\n";
+        return;
+    }
+
+    for (const auto& tarefa : tarefas){
+        arquivo << "Nome:" << tarefa._nome << ";"
+                << "Descrição:" << tarefa._descricao << ";"
+                << "Data:" << tarefa._data << ";"
+                << "Hora:" << tarefa._hora << ";"
+                << "Disciplina:" << tarefa._disciplina << "\n";
+
+    }
+
+    arquivo.close();
+
+    }
+
+    //função que carrega tarefas de arquivo
+    void Eventos::carregarTarefasDeArquivo(std::vector<Eventos>& tarefas, const std::string& nomeArquivo){
     
+    tarefas.clear();
+
+    std::ifstream arquivo(nomeArquivo);
+
+    if (!arquivo.is_open()){
+        std::cerr << "Erro ao abrir o arquivo para leitura.\n";
+        return;
+    }
+
+    std::string linha;
+
+    while (std::getline(arquivo, linha)){
+        std::istringstream ss(linha);
+        std::string token;
+
+        Eventos novaTarefa;
+
+        while (std::getline(ss, token, ';')){
+            std::istringstream tokenStream(token);
+            std::string chave, valor;
+            std::getline(tokenStream, chave, ':');
+            std::getline(tokenStream, valor);
+
+            if (chave == "Nome"){
+                novaTarefa._nome = valor;
+            } else if (chave == "Descrição"){
+                novaTarefa._descricao = valor;
+            } else if (chave == "Data"){
+                novaTarefa._data = valor;
+            } else if (chave == "Hora"){
+                novaTarefa._hora = valor;
+            } else if (chave == "Disciplina"){
+                novaTarefa._disciplina = valor;
+
+        }
+
+        // Adiciona a tarefa ao vetor
+        tarefas.push_back(novaTarefa);
+    }
+
+    arquivo.close();
+
+    }
+
+    }
+
+
+

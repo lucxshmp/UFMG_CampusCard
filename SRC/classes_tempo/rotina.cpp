@@ -2,7 +2,10 @@
 #include "validação.hpp"
 
 
-    void Rotina::cadastrarDisciplina() {
+
+    void Rotina::cadastrarDisciplina(){
+
+        carregarDisciplinasDeArquivo("discplinas.txt");
 
         //adicionar classe Validacao
         Validacao validacao;
@@ -70,11 +73,14 @@
         //sair do loop apenas quando o usuário não tiver mais disciplinas para cadastrar
         } while (cadastrarMaisDisciplina == 'S' || cadastrarMaisDisciplina == 's');
 
+        salvarDisciplinasEmArquivo("disciplinas.txt");
+    
     }
-
 
     //função que permite realizar alterações nas disciplinas
     void Rotina::editar_disciplina(){
+
+        carregarDisciplinasDeArquivo("disciplinas.txt");
 
         //inserir a classe Valicao na função
         Validacao validacao;
@@ -88,13 +94,14 @@
         do{
 
             //perguntar qual disciplina o usuário quer alterar  
-            std::cout << "Escolha o número correspente para alterar a disciplina" << std::endl;
+            std::cout << "DISCIPLINAS CADASTRADAS" << std::endl;
 
             //Listar todas as disciplinas cadastradas
             for(int i=0; i<disciplinas.size(); i++){
-                std::cout << i+1 << " - " << disciplinas[i]._nome << std::endl;
+                std::cout << "   " << i+1 << ". " << disciplinas[i]._nome << std::endl;
             }
-            std::cout << ">>> ";
+            std::cout << "Escolha o número correspente para alterar a disciplina: " << std::endl;
+            
             aux = validacao.validarNumero(aux);
             std::cout << std::endl;
 
@@ -145,7 +152,6 @@
             std::cout << std::endl;
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(),   '\n');
 
-          
             //Possibilidade de realizar mais alterações
             std::cout << ">>> Deseja realizar mais alterações? (S/N): ";
             std::cin >> realizarAlteracao;
@@ -157,6 +163,8 @@
 
         //condição parada do loop
         } while(realizarAlteracao == 'S' || realizarAlteracao == 's');
+     
+        salvarDisciplinasEmArquivo("disciplinas.txt");
 
     }
 
@@ -164,6 +172,7 @@
 
         /*cadastro de dados da disciplina colocando o nome e 
         as suas informaçoes em um vetor de disciplinas*/
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         std::cout << "> Digite o código da disciplina: ";
         std::getline(std::cin, novaDisciplina._codigo);
@@ -216,6 +225,8 @@
     }
 
     void Rotina::informacoes_disciplina(){
+
+        carregarDisciplinasDeArquivo("disciplinas.txt");
 
         //inserir classe Validacao na função
         Validacao validacao;

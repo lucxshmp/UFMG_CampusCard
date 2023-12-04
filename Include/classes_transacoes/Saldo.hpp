@@ -4,7 +4,7 @@
 #include "SimulaBancodedados.hpp"
 #include "usuario.hpp"
 
-class Saldo {
+class Saldo{
     private: 
         double saldo_atual;
         double valor_atual;
