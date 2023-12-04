@@ -1,5 +1,6 @@
 #include "menuSalas.hpp"
 #include "SalasUteis.hpp"
+#include "menuDepartamento.hpp"
 #include <iostream>
 
 namespace media::ui{
