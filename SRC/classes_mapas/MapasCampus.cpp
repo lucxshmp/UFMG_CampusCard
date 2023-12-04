@@ -1,7 +1,7 @@
-#include "menuMapas.hpp"
-#include "mapa.hpp"
+#include "redirecionamento.hpp"
+#include "MapasCampus.hpp"
+#include <string>
 #include <iostream>
-
 
 namespace media::ui{
 
@@ -14,6 +14,8 @@ namespace media::ui{
     }
 
     Menu *MapasCampus::next(unsigned option) {
+        
+        do{
         switch (option) {
             case 1:
                 Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1ML72QfOedus6YnM-UgALSKkp7HFLrb63/view?usp=sharing");
@@ -28,9 +30,11 @@ namespace media::ui{
                 return nullptr;
 
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
+                // Opcaoo invalida, menu padrao
                 std::cout << "Opcao invalida!" << std::endl;
-                return nullptr;
+                campus.render();
+                return new MapasCampus;
         }
+    } while (option != 3)
     }
 };
