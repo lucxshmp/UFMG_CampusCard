@@ -27,7 +27,7 @@ O projeto foi desenvolvido especialmente para alunos da UFMG, funcionários da u
 ## Como foi feito 
 Em primeiro plano, é possível que o aluno que está com seu curso vigente possa liberar as catracas dos prédios através do aplicativo, além de cancelar a validade da carteira física quando a mesma for perdida ou furtada. O que se torna um processo mais fácil do que temos hoje no sistema da UFMG. Além de com o número de matrícula conseguir gerar uma carteira de estudante digital que comprove seu vínculo com a universidade em cinemas, museus e shows, onde para que eu conseguir meia entrada necessite de comprovação.
 
-Em segundo plano, é possível acessar um mapa dos prédios universitários, para ser possível encontrar as salas de aula. Além do mapa das salas também é possível localizar as salas do colegiado, diretoria, departamento, outros órgãos acadêmicos e salas de professores, assim como as informações de contato para conversar com professores caso seja preciso encontrar os mesmos pessoalmente.
+Em segundo plano, é possível acessar um mapa dos campi universitários, para ser possível encontrar os prédios desejados. Além disso, é possível visualizar os mapas das linhas do ônibus interno da UFMG, com os respectivos pontos e paradas, para decidir qual a melhor rota a se tomar a partir de onde está. 
 
 Em terceiro plano, é possível consultar e cadastrar transportes independentes no sistema para conseguir localizar qual van passa perto da sua residência e vai para a UFMG, assim como contém o número de telefone dos responsáveis para esclarecimento de dúvidas e possível interesse em contratar o serviço. Sendo que é possível cadastrar vans novas, exibir a lista de vans cadastradas e editar algum cadastro que já esteja lá com base na placa do veículo.
 
@@ -38,6 +38,8 @@ Em quinto plano, é possível recarregar um valor no restaurante universitário 
 Em sexto plano, você é capaz de montar um quadro que tenha os horários do seu turno de aula, adicionando o horário da aula, a turma, matéria entre outras informações. Nesse menu você consegue também alterá-lo caso o mesmo mude, por questões de trancamento ou desistência. Após fechar as informações adicionadas no quadro, ele fica visível dentro do sistema de maneira que é possível visualizá-lo quando quiser.
 
 Em sétimo plano, é possível montar o seu calendário com as datas de atividades avaliativas do seu semestre, para facilitar que não perca nada por esquecimento ou engano. Nesse menu você consegue adicionar, alterar e excluir as atividades do calendário. Além de que quando as atividades estiverem próximas você recebe uma notificação para lembrar da atividade. O calendário pode ser dividido em dia, semana, mês, semestre e ano. Além de ter a funcionalidade de limpar ele.
+
+Em oitavo plano, é possível ver as salas de aula separadas por prédios, para não ficar perdido sem saber para qual prédios se dirigir quando sair a sua grade semestral. Além disso, é possível cadastras salas que são úteis para você, como salas do colegiado, diretoria, outros órgãos acadêmicos e salas de professores, e exibí-las quando necessário.
 
 ## Passos futuros
 
