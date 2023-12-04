@@ -1,6 +1,7 @@
 #include "menuEventos.hpp"
 #include "eventos.hpp"
 #include "menuPrincipal.hpp"
+#include "interface.hpp"
 
 
 namespace media::ui{
@@ -23,7 +24,13 @@ namespace media::ui{
             Rotina rotina;
             Grade_Semanal grade;
 
-            switch (option) {
+            switch (option){
+
+                case 0:
+                
+                    Interface::mensagemSaida();
+                    return nullptr;
+
                 case 1:
                     rotina.cadastrarDisciplina();
                     return new MenuGrade(); 
@@ -49,7 +56,6 @@ namespace media::ui{
                     std::cout << "Opcao invalida!" << std::endl;
                     return new MenuGrade();
             }
-            while(option != 5);
-        }
+        }while(option < 0 || option > 5);
     }
 };

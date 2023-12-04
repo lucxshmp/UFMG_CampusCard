@@ -2,6 +2,7 @@
 #include "onibus.hpp"
 #include "menuOnibus.hpp"
 #include "menuVans.hpp"
+#include "interface.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
@@ -26,7 +27,13 @@ namespace media::ui{
     Menu *MenuTransporte::next(unsigned option) {
         media::ui::MenuOnibus onibus;
         media::ui::MenuVans vans;
+        do{
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+            
             case 1:
                 system(CLEAR_SCREEN);
                 onibus.render();
@@ -39,15 +46,13 @@ namespace media::ui{
                 return new MenuVans();
                 break;
 
-            case 0:
-            std::cout << "Saindo..." << std::endl;
-            break;
-
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+                 // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while (option < 0 || option > 2);
     }
 };
 

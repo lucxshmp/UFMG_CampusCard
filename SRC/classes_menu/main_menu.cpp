@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "main_menu.hpp"
 #include "menu.hpp"
+#include "interface.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
@@ -35,7 +36,13 @@ namespace media::ui{
         media::ui::MenuMapas mapas;
         media::ui::MenuCarteirinha carteirinha;
         
-        switch (option) {
+        do {  
+            switch (option){
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 // Lógica para a opção 1 - Transacoes RU e Saldo
                 // Crie e retorne uma instância do menu correspondente, se aplicável
@@ -93,9 +100,11 @@ namespace media::ui{
                 break;
 
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!\n" << std::endl;
+                // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while (option < 0 || option > 7);
     }
 };

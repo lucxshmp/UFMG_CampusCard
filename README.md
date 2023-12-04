@@ -14,6 +14,9 @@ Projeto desenvolvido como parte da disciplina de Programação e Desenvolvimento
 - Gabriel L. Pereira 
 - Lucas H. M.Petronilho
 
+## PROJETO
+
+Para que o programa funcione perfeitamente, é necessário ter instalada, a biblioteca libharu, disponível na pasta build e, se correr como planejada, já inclusa com a execução do MakeFile.
 
 ## Objetivos (Explicar o projeto)
 

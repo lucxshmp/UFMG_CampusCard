@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "menuMapas.hpp"
 #include "menu.hpp"
+#include "interface.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
@@ -24,8 +25,14 @@ namespace media::ui{
     Menu *MenuMapas::next(unsigned option) {
         media::ui::MapasCampus campus;
         media::ui::MapasInterno interno;
-        
+
+        do{
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 // Lógica para a opção 1 - Mapas dos Campus
                 system(CLEAR_SCREEN);
@@ -41,10 +48,12 @@ namespace media::ui{
                 break; 
             
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!\n" << std::endl;
+                // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        }while (option < 0 || option > 2);
     }
 };
 

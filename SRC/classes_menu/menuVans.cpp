@@ -1,10 +1,11 @@
 #include "menuTransporte.hpp"
 #include "van.hpp"  // Altere o nome do arquivo para van.hpp
 #include "menuVans.hpp"  // Altere o nome do arquivo para menuVan.hpp
+#include "interface.hpp"
 
 namespace media::ui {
     /// @brief construtor com todas as opcoes do menu principal 
-        MenuVans::MenuVans(){ {
+        MenuVans::MenuVans(){
         _title = "\n\n********** MENU VANS **********\n\n ";
         _title = "Escolha uma opção: \n";
         _options.push_back("1. Cadastrar van");
@@ -15,7 +16,13 @@ namespace media::ui {
     }
 
         Menu *MenuVans::next(unsigned option) {
+        do {
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 minhaVan.cadastrarVan();
                 minhaVan.exibirInformacao();
@@ -29,14 +36,12 @@ namespace media::ui {
                 minhaVan.editarVan();
                 return nullptr;
 
-            case 0:
-                std::cout << "Saindo..." << std::endl;
-                break;
-
-            default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
+           default:
+                 // Opção inválida, retorna nullptr para passar na compilaçao
+                std::cout << "Opcao invalida! Digite novamente:\n" << std::endl;
+                std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
+        } while ( option < 0 || option > 3);
     }
 };
