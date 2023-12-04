@@ -16,8 +16,9 @@ namespace media::ui{
         do {
         switch (option){
 
-            case 0:
-                Interface::mensagemSaida();
+            ccase 0:
+                Interface interface;
+                interface.mensagemSaida();
                 return nullptr;
 
             case 1:

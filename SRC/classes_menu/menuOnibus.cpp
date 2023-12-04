@@ -2,6 +2,7 @@
 #include "onibus.hpp"
 #include "menuOnibus.hpp"
 #include "menuVans.hpp"
+#include "interface.hpp"
 
 namespace media{
   namespace ui {
@@ -32,11 +33,14 @@ namespace media{
           std::cin.ignore();  // Limpa o buffer de entrada
           meuOnibus.editarOnibus();
           return new MenuOnibus(); 
+          
+        case 0:
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
 
-            case 0:
-            std::cout << "Saindo..." << std::endl;
-              return nullptr;
-            break;
 
             default:
                 std::cout << "Opcao invalida!" << std::endl;

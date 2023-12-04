@@ -17,9 +17,7 @@
 #endif
 
 
-namespace media{
-  namespace ui {
-
+namespace media::ui{
     /// @brief construtor com todas as opcoes do menu principal 
     MenuEventos::MenuEventos(){
 
@@ -27,13 +25,11 @@ namespace media{
         _options.push_back("1 - Cadastrar tarefa");
         _options.push_back("2 - Editar tarefa");
         _options.push_back("3 - Visualizar tarefas cadastradas");
-        _options.push_back("4 - aa");
-        _options.push_back("5 - Retornar ao menu principal");
+        _options.push_back("4 - Retornar ao menu principal");
 
     }
 
     Menu *MenuEventos::next(unsigned option){
-        Interface interface;
 
         int aux = 0;
         do {
@@ -43,8 +39,9 @@ namespace media{
             switch (option){
 
                 case 0:
-                    aux = system(CLEAR_SCREEN);
-                    if (aux == -1) {}
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
                     interface.mensagemSaida();
                     return nullptr;
 
@@ -65,7 +62,7 @@ namespace media{
                     if (aux == -1) {}
                     eventos.exibirPorPrazo(tarefas);
                     return new MenuGrade();
-                    
+
                 case 4:
                     aux = system(CLEAR_SCREEN);
                     if (aux == -1) {}
@@ -78,5 +75,4 @@ namespace media{
             }
         }while(option < 0 || option > 5);
     }
-};
 };

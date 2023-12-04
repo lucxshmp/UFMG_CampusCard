@@ -33,9 +33,11 @@ namespace media{
                 return nullptr;
 
             case 0:
-                std::cout << "Saindo..." << std::endl;
-              return nullptr;
-                break;
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
 
             default:
                 // Opção inválida, retorne nullptr ou um menu padrão

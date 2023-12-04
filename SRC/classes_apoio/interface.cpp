@@ -2,6 +2,7 @@
 #include "rotina.hpp"
 
 void Interface::mensagemSaida(){
+    std::cout << std::endl;
     std::cout << "-⎽_⎽-⎻⎺⎺⎻-⎽_⎽--⎻⎺⎺⎻--⎽_⎽-⎻⎺⎺⎻-⎽_⎽--⎻⎺⎺⎻-" << std::endl;
     std::cout << " Obrigado por usar O UFMG:CampusCard!" << std::endl;
     std::cout << "-⎽_⎽-⎻⎺⎺⎻-⎽_⎽--⎻⎺⎺⎻--⎽_⎽-⎻⎺⎺⎻-⎽_⎽--⎻⎺⎺⎻-" << std::endl;
