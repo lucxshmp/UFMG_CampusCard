@@ -2,6 +2,16 @@
 #include "Transacoes.hpp"
 #include "interface.hpp"
 
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
+
+
 Transacoes transacao;
 Usuario usuario;
 int nivel_fump =0;
