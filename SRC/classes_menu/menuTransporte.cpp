@@ -10,7 +10,7 @@
 #else
     // Comando para limpar o console em sistemas Unix/Linux
     #define CLEAR_SCREEN "clear"
-#endif
+#endif 
 
 
 namespace media::ui{

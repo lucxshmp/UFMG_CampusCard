@@ -9,7 +9,7 @@
 #else
     // Comando para limpar o console em sistemas Unix/Linux
     #define CLEAR_SCREEN "clear"
-#endif
+#endif 
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
@@ -73,4 +73,5 @@ namespace media::ui{
                     return MenuGrade();
             }
         }while(option < 0 || option > 5);
-};
+}
+}

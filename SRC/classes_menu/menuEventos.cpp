@@ -27,7 +27,7 @@ namespace media::ui{
         _options.push_back("3 - Visualizar tarefas cadastradas");
         _options.push_back("4 - Retornar ao menu principal");
 
-    }
+    } 
 
     Menu *MenuEventos::next(unsigned option){
 

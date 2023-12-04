@@ -24,7 +24,7 @@ namespace media::ui{
         _options.push_back("2 - Realizar Deposito");
         _options.push_back("3 - Consultar Saldo");
     }
-
+ 
     Menu *MenuTransacoesRU::next(unsigned option) {
         
         switch (option) {

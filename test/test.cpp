@@ -281,3 +281,4 @@ TEST_CASE("CarteiraEstudante - obterStatusValidade e definirStatusValidade") {
         
     }
     //FIM DOS TESTES DE CLASSE DE TEMPO
+    

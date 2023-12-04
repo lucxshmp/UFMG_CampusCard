@@ -12,6 +12,7 @@
     #define CLEAR_SCREEN "clear"
 #endif
 
+
 namespace media{
   namespace ui {
 /// @brief construtor com todas as opcoes do menu principal 
