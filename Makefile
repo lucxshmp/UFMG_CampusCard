@@ -2,10 +2,15 @@ PROJECT_NAME := ufmgcampuscard
 
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
+LDFLAGS := -L../ufmg_campuscard/libharu/build -lharu
+
+LIBHARU_DIR := ../ufmg_campuscard/build/libharu
+LIBHARU_INCLUDE := $(LIBHARU_DIR)/include
+LIBHARU_SRC := $(LIBHARU_DIR)/src
 
 ST_LIB_PATH := ../ufmg_campuscard/build
 
-INC_DIR = include
+INC_DIR = include 
 
 SRC_DIR := SRC
 TEST_DIR := test 
