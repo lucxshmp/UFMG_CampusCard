@@ -1,12 +1,11 @@
+#include "redirecionamento.hpp"
 #include "menuMapas.hpp"
 #include "MapasInterno.hpp"
-#include "redirecionamento.hpp"
 #include <iostream>
 
-
 namespace media::ui{
-      
-/// @brief construtor com todas as opcoes do menu principal 
+    
+/// @brief construtor com todas as opcoes do menu  
     MapasInterno::MapasInterno(){
         _title = "Mapas da UFMG - Pontos Interno";
         _options.push_back("1 - Linha 1");
@@ -20,6 +19,8 @@ namespace media::ui{
     }
 
     Menu *MapasInterno::next(unsigned option) {
+        
+        do{
         switch (option) {
             case 1:
                 Redirecionamento::redirecionarLink("https://drive.google.com/file/d/1M3d3_lgyRktZz90pcj8ekznKGNTqKmRT/view?usp=sharing");
@@ -54,9 +55,10 @@ namespace media::ui{
                 return nullptr;
 
             default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
-                return nullptr;
+                // Opcao invalida, retorne menu padrao
+                interno.render();
+                return new MapasInterno;
         }
+    } while (option != 8)
     }
 };
