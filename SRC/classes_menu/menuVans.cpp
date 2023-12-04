@@ -1,6 +1,7 @@
 #include "menuTransporte.hpp"
 #include "van.hpp"  // Altere o nome do arquivo para van.hpp
 #include "menuVans.hpp"  // Altere o nome do arquivo para menuVan.hpp
+#include "interface.hpp"
 
 namespace media::ui {
     /// @brief construtor com todas as opcoes do menu principal 
@@ -17,6 +18,11 @@ namespace media::ui {
         Menu *MenuVans::next(unsigned option) {
         do {
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 minhaVan.cadastrarVan();
                 minhaVan.exibirInformacao();
@@ -28,10 +34,6 @@ namespace media::ui {
 
             case 3:
                 minhaVan.editarVan();
-                return nullptr;
-
-            case 0:
-                std::cout << "Saindo..." << std::endl;
                 return nullptr;
 
            default:

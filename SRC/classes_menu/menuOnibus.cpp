@@ -2,6 +2,7 @@
 #include "onibus.hpp"
 #include "menuOnibus.hpp"
 #include "menuVans.hpp"
+#include "interface.hpp"
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
@@ -18,6 +19,11 @@ namespace media::ui{
     Menu *MenuOnibus::next(unsigned option) {
         do{
         switch (option) {
+            
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 
                 meuOnibus.cadastrarOnibus();
@@ -33,10 +39,6 @@ namespace media::ui{
                 
                 meuOnibus.editarOnibus();
                 return nullptr; 
-
-            case 0:
-                std::cout << "Saindo..." << std::endl;
-                return nullptr;
 
             default:
                 // Opção inválida, retorna nullptr para passar na compilaçao

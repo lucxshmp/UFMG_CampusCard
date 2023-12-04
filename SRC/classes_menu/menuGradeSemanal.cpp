@@ -1,7 +1,15 @@
 #include "menuGradeSemanal.hpp"
 #include "gradeSemanal.hpp"
 #include "rotina.hpp"
+#include "interface.hpp"
 
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
@@ -19,31 +27,49 @@ namespace media::ui{
 
         Rotina rotina;
         Grade_Semanal grade;
+        int aux;
+        do {
+            switch (option){
 
-        switch (option) {
-            case 1:
-                rotina.cadastrarDisciplina();
-                return MenuGrade(); 
+                case 0:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    Interface::mensagemSaida();
+                    return nullptr;
 
-            case 2:
-                rotina.editar_disciplina();
-                return MenuGrade();
+                case 1:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    rotina.cadastrarDisciplina();
+                    return MenuGrade(); 
+
+                case 2:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    rotina.editar_disciplina();
+                    return MenuGrade();
+                    
+                case 3:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    rotina.informacoes_disciplina();
+                    return MenuGrade();
                 
-            case 3:
-                rotina.informacoes_disciplina();
-                return MenuGrade();
-            
-            case 4:
-                grade.exibir_grade_semanal();
-                return MenuGrade();
+                case 4:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    grade.exibir_grade_semanal();
+                    return MenuGrade();
 
-            case 5:
-                return MenuPrincipal::MenuPrincipal();;
+                case 5:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    return MenuPrincipal::MenuPrincipal();;
 
-            default:
-                // Opção inválida, retorne nullptr ou um menu padrão
-                std::cout << "Opcao invalida!" << std::endl;
-                return MenuGrade();
-        }
-    }
+                default:
+                    // Opção inválida, retorne nullptr ou um menu padrão
+                    std::cout << "Opcao invalida!" << std::endl;
+                    return MenuGrade();
+            }
+        }while(option < 0 || option > 5);
 };

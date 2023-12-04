@@ -1,5 +1,6 @@
 #include "menuCarteirinha.hpp"
 #include "CarteiraEstudante.hpp"
+#include "interface.hpp"
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
@@ -10,10 +11,15 @@ namespace media::ui{
         _options.push_back("3 - Invalidar Carteirinha Fisica");
     }
 
-    Menu *MenuCarteirinha::next(unsigned option) {
+    Menu *MenuCarteirinha::next(unsigned option){
         media::ui::MenuCarteirinha carteirinha;
         do {
-        switch (option) {
+        switch (option){
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 const char* novaCarteirinhaDigi;
                 CarteiraEstudante::GerarCarteiraDigital(novaCarteirinhaDigi); 
@@ -52,6 +58,6 @@ namespace media::ui{
                 std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
-        } while (option < 0 || option > 3);
+        }while (option < 0 || option > 3);
     }
 };

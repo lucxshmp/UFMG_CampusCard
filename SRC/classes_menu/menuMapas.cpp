@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "menuMapas.hpp"
 #include "menu.hpp"
+#include "interface.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
@@ -27,6 +28,11 @@ namespace media::ui{
 
         do{
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 // Lógica para a opção 1 - Mapas dos Campus
                 system(CLEAR_SCREEN);
@@ -47,7 +53,7 @@ namespace media::ui{
                 std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
-        }while (option < 1 || option > 2);
+        }while (option < 0 || option > 2);
     }
 };
 

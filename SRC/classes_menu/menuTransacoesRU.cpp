@@ -1,5 +1,6 @@
 #include "menuTransacoesRU.hpp"
 #include "Transacoes.hpp"
+#include "interface.hpp"
 
 Transacoes transacao;
 Usuario usuario;
@@ -17,6 +18,11 @@ namespace media::ui{
     Menu *MenuTransacoesRU::next(unsigned option) {
         do{
         switch (option) {
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 
                 std::cout<<"Informe o nivel fump (2 a 6): "<<std::endl;
@@ -46,6 +52,6 @@ namespace media::ui{
                 std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
-        } while (option < 1 || option > 3);
+        } while (option < 0 || option > 3);
     }
 };

@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "main_menu.hpp"
 #include "menu.hpp"
+#include "interface.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
@@ -36,7 +37,12 @@ namespace media::ui{
         media::ui::MenuCarteirinha carteirinha;
         
         do {  
-            switch (option) {
+            switch (option){
+
+            case 0:
+                Interface::mensagemSaida();
+                return nullptr;
+
             case 1:
                 // Lógica para a opção 1 - Transacoes RU e Saldo
                 // Crie e retorne uma instância do menu correspondente, se aplicável

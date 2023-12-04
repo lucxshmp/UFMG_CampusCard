@@ -8,7 +8,8 @@
         rotina.carregarDisciplinasDeArquivo("disciplinas.txt");
 
         Validacao validacao;
-        validacao.tituloSessao("Grade de Horário");
+        Interface interface;
+        interface.tituloSessao("Grade de Horário");
 
         //auxiliares para manipulção de dados e leitura do código
         const int colunas = 7;
@@ -19,7 +20,7 @@
         //criação do quadro, como um vetor de vetor
         std::vector<std::vector<std::string>> grade(linhas, std::vector<std::string>(colunas, ""));
 
-        //Inicializando a matriz com travessão para espaços vazios 
+        //Inicializando a matriz com espaço vázio
         for (int i = 0; i < colunas; i++){
             for (int j = 0; j < linhas; j++){
                 grade[j][i] = " ";

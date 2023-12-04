@@ -78,4 +78,28 @@ class Eventos{
         */
         void carregarTarefasDeArquivo(std::vector<Eventos>& tarefas, const std::string& nomeArquivo);
 
+        /**
+        * @brief funções set para alterar o parâmetro privado
+        * @param nome item privado refrente ao nome da tarefa
+        * @param data item privado refrente a data da tarefa
+        * @param descricao item privado refrente a descrição da tarefa
+        * @param hora item privado refrente a hora da tarefa
+        * @param disciplina item privado refrente a disciplina da tarefa
+        */   
+        void setNome(const std::string& nome);
+        void setDescricao(const std::string& descricao);
+        void setData(const std::string& data);
+        void setHora(const std::string& hora);
+        void setDisciplina(const std::string& disciplina);
+
+        /**
+        * @brief funções get obtem o parâmetro privado
+        * @return o item privado desejado
+        */
+        std::string getNome() const;
+        std::string getDescricao() const;
+        std::string getData() const;
+        std::string getHora() const;
+        std::string getDisciplina() const;
+
 };

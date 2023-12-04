@@ -9,7 +9,8 @@
 
         //adicionar classe Validacao
         Validacao validacao;
-        validacao.tituloSessao("Cadastrar Disciplinas");
+        Interface interface;
+        interface.tituloSessao("Cadastrar Disciplinas");
 
         //inicializa com vazio o char
         char cadastrarMaisDisciplina = '\n';
@@ -84,7 +85,8 @@
 
         //inserir a classe Valicao na função
         Validacao validacao;
-        validacao.tituloSessao("Editar Disciplinas");
+        Interface interface;
+        interface.tituloSessao("Editar Disciplinas");
 
         //Auxiliares inicializados
         int aux = 0;
@@ -230,7 +232,8 @@
 
         //inserir classe Validacao na função
         Validacao validacao;
-        validacao.tituloSessao("Informações das disciplinas");
+        Interface interface;
+        interface.tituloSessao("Informações das disciplinas");
 
         //loop que imprimi na tela as disciplinas cadastradas
 
