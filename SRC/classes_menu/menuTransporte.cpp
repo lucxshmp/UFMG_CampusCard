@@ -31,8 +31,11 @@ namespace media::ui{
         switch (option) {
 
             case 0:
-                Interface::mensagemSaida();
-                return nullptr;
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
             
             case 1:
                 system(CLEAR_SCREEN);

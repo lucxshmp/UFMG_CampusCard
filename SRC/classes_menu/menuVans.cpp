@@ -2,6 +2,14 @@
 #include "van.hpp"  // Altere o nome do arquivo para van.hpp
 #include "menuVans.hpp"  // Altere o nome do arquivo para menuVan.hpp
 
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
+
 namespace media{ 
   namespace ui {
     /// @brief construtor com todas as opcoes do menu principal 
@@ -33,9 +41,11 @@ namespace media{
                 return nullptr;
 
             case 0:
-                std::cout << "Saindo..." << std::endl;
-              return nullptr;
-                break;
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
 
             default:
                 // Opção inválida, retorne nullptr ou um menu padrão

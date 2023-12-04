@@ -1,6 +1,16 @@
 #include "menuTransacoesRU.hpp"
 #include "Transacoes.hpp"
 
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
+
+
 Transacoes transacao;
 Usuario usuario;
 int nivel_fump =0;
@@ -18,6 +28,17 @@ namespace media::ui{
     Menu *MenuTransacoesRU::next(unsigned option) {
         
         switch (option) {
+<<<<<<< HEAD
+=======
+
+            case 0:
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
+
+>>>>>>> 6c7af2ac23d0bdfc39a74dda8e9c1032467ed05b
             case 1:
                 // fazer aqui o que vc quer que o programa faça quando a pessoa apertar a opçao 2
                 //exemplo se for a opção consultar data de prova chamar uma função que faça isso 

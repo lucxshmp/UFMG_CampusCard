@@ -2,6 +2,15 @@
 #include "onibus.hpp"
 #include "menuOnibus.hpp"
 #include "menuVans.hpp"
+#include "interface.hpp"
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
 
 namespace media{
   namespace ui {
@@ -33,10 +42,13 @@ namespace media{
           meuOnibus.editarOnibus();
           return new MenuOnibus(); 
 
-            case 0:
-            std::cout << "Saindo..." << std::endl;
-              return nullptr;
-            break;
+        case 0:
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
+                    return nullptr;
+
 
             default:
                 std::cout << "Opcao invalida!" << std::endl;

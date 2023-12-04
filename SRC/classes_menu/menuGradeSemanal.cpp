@@ -32,9 +32,10 @@ namespace media::ui{
             switch (option){
 
                 case 0:
-                    aux = system(CLEAR_SCREEN);
-                    if (aux == -1) {}
-                    Interface::mensagemSaida();
+                    ux = system(CLEAR_SCREEN);
+                        if (aux == -1) {}
+                    Interface interface;
+                    interface.mensagemSaida();
                     return nullptr;
 
                 case 1:
