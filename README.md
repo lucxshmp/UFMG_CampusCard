@@ -27,7 +27,7 @@ O projeto foi desenvolvido especialmente para alunos da UFMG, funcionários da u
 ## Como foi feito 
 Em primeiro plano, é possível que o aluno que está com seu curso vigente possa liberar as catracas dos prédios através do aplicativo, além de cancelar a validade da carteira física quando a mesma for perdida ou furtada. O que se torna um processo mais fácil do que temos hoje no sistema da UFMG. Além de com o número de matrícula conseguir gerar uma carteira de estudante digital que comprove seu vínculo com a universidade em cinemas, museus e shows, onde para que eu conseguir meia entrada necessite de comprovação.
 
-Em segundo plano, é possível acessar um mapa dos campi universitários, para ser possível encontrar os prédios desejados. Além disso, é possível visualizar os mapas das linhas do ônibus interno da UFMG, com os respectivos pontos e paradas, para decidir qual a melhor rota a se tomar a partir de onde está. 
+Em segundo plano, é possível acessar os mapas dos campi universitários, para ser possível encontrar os prédios desejados. Além disso, é possível visualizar os mapas das linhas do ônibus interno da UFMG, com os respectivos pontos e paradas, para decidir qual a melhor rota a se tomar a partir de onde está. 
 
 Em terceiro plano, é possível consultar e cadastrar transportes independentes no sistema para conseguir localizar qual van passa perto da sua residência e vai para a UFMG, assim como contém o número de telefone dos responsáveis para esclarecimento de dúvidas e possível interesse em contratar o serviço. Sendo que é possível cadastrar vans novas, exibir a lista de vans cadastradas e editar algum cadastro que já esteja lá com base na placa do veículo.
 
