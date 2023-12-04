@@ -1,34 +1,31 @@
-#include "menuOnibusVans.hpp"
+#include "menuTransporte.hpp"
 #include "onibus.hpp"
 #include "menuOnibus.hpp"
+#include "menuVans.hpp"
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
-    MenuOnibusVans::MenuOnibusVans(){
-        _title = "\n\n********** MENU ONIBUS **********\n\n ";
+    MenuVans::MenuVans(){
+        _title = "\n\n********** MENU VANS **********\n\n ";
         _title = "Escolha uma opção: \n";
-        _options.push_back("1. Cadastrar ônibus");
-        _options.push_back("2. Exibir ônibus cadastrados");
-        _options.push_back("3. Editar ônibus");
+        _options.push_back("1. Cadastrar vans");
+        _options.push_back("2. Exibir vans");
+        _options.push_back("3. Editar van");
         _options.push_back("0. Sair");
         std::cout << "> ";
     }
 
-    Menu *MenuOnibusVans::next(unsigned option) {
+    Menu *MenuVans::next(unsigned option) {
         switch (option) {
             case 1:
-                  meuOnibus.cadastrarOnibus();
-                  meuOnibus.exibirInformacao();
-                return nullptr;
+                 //implementar para vans
           
             case 2:
 
-               meuOnibus.exibirOnibusCadastrados();
-              return MenuOnibusVans();
+               //implementar para vans
 
             case 3: 
-              meuOnibus.editarOnibus();
-                return nullptr; 
+              //implementar para vans
 
             case 0:
             std::cout << "Saindo..." << std::endl;

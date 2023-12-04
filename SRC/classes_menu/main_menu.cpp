@@ -28,7 +28,7 @@ namespace media::ui{
 
     Menu *MenuPrincipal::next(unsigned option) {
         media::ui::MenuTransacoesRU ru;
-        media::ui::MenuOnibusVans transporte;
+        media::ui::MenuTransporte transporte;
         media::ui::MenuGrade grade;
         media::ui::MenuEventos eventos;
         media::ui::MenuSalas salas;
@@ -49,7 +49,7 @@ namespace media::ui{
                 // Crie e retorne uma instância do menu correspondente, se aplicável
                 system(CLEAR_SCREEN);
                 transporte.render();
-                return new MenuOnibusVans();
+                return new MenuTransporte();
                 break; 
 
             case 3:
