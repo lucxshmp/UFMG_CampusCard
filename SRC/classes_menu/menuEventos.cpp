@@ -1,54 +1,74 @@
 #include "menuEventos.hpp"
 #include "eventos.hpp"
-#include "menuPrincipal.hpp"
+#include "main_menu.hpp"
+#include "validação.hpp"
+#include "gradeSemanal.hpp"
+#include "rotina.hpp"
 #include "interface.hpp"
+#include <iostream>
+#include <iomanip>
+
+#ifdef _WIN32
+    // Comando para limpar o console no Windows
+    #define CLEAR_SCREEN "cls"
+#else
+    // Comando para limpar o console em sistemas Unix/Linux
+    #define CLEAR_SCREEN "clear"
+#endif
 
 
-namespace media::ui{
+namespace media{
+  namespace ui {
 
     /// @brief construtor com todas as opcoes do menu principal 
-    MenuGrade::MenuGrade(){
-    
+    MenuEventos::MenuEventos(){
+
         _title = "Grade Semanal";
-        _options.push_back("1 - Cadastrar Disciplina");
-        _options.push_back("2 - Editar Disciplina");
-        _options.push_back("3 - Visualizar disciplinas cadastradas");
-        _options.push_back("4 - Visualizar quadro de horários semanais");
+        _options.push_back("1 - Cadastrar tarefa");
+        _options.push_back("2 - Editar tarefa");
+        _options.push_back("3 - Visualizar tarefas cadastradas");
+        _options.push_back("4 - aa");
         _options.push_back("5 - Retornar ao menu principal");
 
     }
 
-    Menu *MenuGrade::next(unsigned option){
-        
+    Menu *MenuEventos::next(unsigned option){
+        Interface interface;
+
+        int aux = 0;
         do {
-            Rotina rotina;
-            Grade_Semanal grade;
+        Eventos eventos;
+        std::vector<Eventos> tarefas;
 
             switch (option){
 
                 case 0:
-                
-                    Interface::mensagemSaida();
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    interface.mensagemSaida();
                     return nullptr;
 
                 case 1:
-                    rotina.cadastrarDisciplina();
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    eventos.adicionarTarefas(tarefas);
                     return new MenuGrade(); 
 
                 case 2:
-                    rotina.editar_disciplina();
-                    return new MenuGrade();
-                    
-                case 3:
-                    rotina.informacoes_disciplina();
-                    return new MenuGrade();
-                
-                case 4:
-            
-                    grade.criarGrade(rotina);
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    eventos.editarTarefas(tarefas);
                     return new MenuGrade();
 
-                case 5:
+                case 3:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
+                    eventos.exibirPorPrazo(tarefas);
+                    return new MenuGrade();
+                    
+                case 4:
+                    aux = system(CLEAR_SCREEN);
+                    if (aux == -1) {}
                     return new MenuPrincipal();
 
                 default:
@@ -58,4 +78,5 @@ namespace media::ui{
             }
         }while(option < 0 || option > 5);
     }
+};
 };

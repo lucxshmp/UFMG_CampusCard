@@ -44,7 +44,7 @@ class Eventos{
          * @brief função que permite exibir as informações e prazos das tarefas
          * @param tarefas vetor dos dados das tarefas
          */
-        void exibirPorPrazo(const std::vector<Eventos>& tarefas);
+        void exibirPorPrazo(std::vector<Eventos>& tarefas);
 
         /**
          * @brief função responsável pela impressão da lista

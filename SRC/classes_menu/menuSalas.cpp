@@ -50,6 +50,6 @@ namespace media::ui{
                 std::cin >> option;  // leia novamente a entrada
                 return nullptr;
         }
-    } while (option < 0 || option > 2);
+    }while (option < 0 || option > 2);
     } 
 };
