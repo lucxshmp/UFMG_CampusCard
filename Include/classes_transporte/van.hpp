@@ -6,9 +6,9 @@
 #include <vector>
 #include <sstream>
 
-class Van {
+class Van{
 private:
-    struct HorarioVan {
+    struct HorarioVan{
         std::string placa;
         std::string tipo;
         std::string marca;

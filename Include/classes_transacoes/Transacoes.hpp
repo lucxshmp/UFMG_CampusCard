@@ -7,7 +7,7 @@
 /* @brief: Nesta classe busca-se efetuar funcionalidades da transacao em si, como confirmar pagamento, deposito
 e gerar e ler documentos para pagamento.  */
 
-class Transacoes {
+class Transacoes{
     private: 
         bool confirma_pagamento;
         bool confirma_deposito;

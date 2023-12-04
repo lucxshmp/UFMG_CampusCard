@@ -4,7 +4,7 @@
 #include "menu.hpp"
 #include "main_menu.hpp"
 
-int main() {
+int main(){
     
     Usuario user;
     media::ui::Login login;

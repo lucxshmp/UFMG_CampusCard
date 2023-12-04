@@ -3,8 +3,8 @@
 #include "menu.hpp"
 #include <string>
 
-namespace media::ui {
-    class MenuCarteirinha : public Menu {
+namespace media::ui{
+    class MenuCarteirinha : public Menu{
     public:
         ///@brief: constrói um menu principal 
         MenuCarteirinha();

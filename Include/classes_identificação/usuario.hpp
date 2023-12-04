@@ -4,7 +4,7 @@
 #include <string> 
 #include <vector> 
 
-class Usuario {
+class Usuario{
 private: 
     long int _matricula;
     std::string _nome;

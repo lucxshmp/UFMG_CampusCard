@@ -17,7 +17,7 @@
             ///@brief: constructor de dados da rotina           
 
             // Definição da estrutura Horario
-            struct Horario {
+            struct Horario{
                 int _dia;
                 int _hora;
 
@@ -27,7 +27,7 @@
                 };
 
             // Definição da estrutura Disciplina
-            struct Disciplina {
+            struct Disciplina{
                 std::string _nome;
                 std::string _codigo;
                 std::string _predio;

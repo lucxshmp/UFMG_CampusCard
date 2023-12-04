@@ -5,8 +5,8 @@
 #include <string>
 #include <iostream>
 
-namespace media::ui {
-    class MapasCampus : public Menu {
+namespace media::ui{
+    class MapasCampus : public Menu{
     public:    
         ///@brief: constroi um menu de opções
         MapasCampus();

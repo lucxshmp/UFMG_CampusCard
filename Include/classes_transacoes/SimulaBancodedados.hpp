@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include "usuario.hpp"
 
-class BancoDeDados {
+class BancoDeDados{
 private:
     std::unordered_map<int, double> saldos_iniciais; /* Simulação de um banco de dados com ID de usuário no formato de
     número de matrícula e saldo inicial */

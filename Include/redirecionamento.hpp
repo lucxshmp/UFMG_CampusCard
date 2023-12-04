@@ -2,7 +2,7 @@
 
 #include <string>
 
-class Redirecionamento {
+class Redirecionamento{
 public:
     static void redirecionarLink(const std::string& link);
 };
