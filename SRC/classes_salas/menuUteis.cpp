@@ -23,11 +23,11 @@ namespace media::ui{
         switch (option) {
             case 1:
                 std::string nome, predio, numero;
-                std::cout << "\nNome da Sala: ";
+                std::cout << "\nNome da Sala (nao utilize espaco): ";
                 std::cin >> nome;
-                std::cout << "Predio da Sala: ";
+                std::cout << "Predio da Sala (nao utilize espaco): ";
                 std::cin >> predio;
-                std::cout << "Numero da Sala: ";
+                std::cout << "Numero da Sala (nao utilize espaco): ";
                 std::cin >> numero;
 
                 cadastro.cadastrarSala(nome, predio, numero);
