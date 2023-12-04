@@ -1,5 +1,6 @@
 #include "menuSalas.hpp"
 #include "SalasUteis.hpp"
+#include "menu.hpp"
 
 #ifdef _WIN32
     // Comando para limpar o console no Windows
