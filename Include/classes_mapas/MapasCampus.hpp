@@ -1,12 +1,12 @@
 #pragma once
 
 #include "menuMapas.hpp"
-#include "mapa.hpp"
+#include "menu.hpp"
 #include <string>
 #include <iostream>
 
-namespace media::ui{
-    class MapasCampus : public Menu{
+namespace media::ui {
+    class MapasCampus : public Menu {
     public:    
         ///@brief: constroi um menu de opções
         MapasCampus();
@@ -18,3 +18,4 @@ namespace media::ui{
 
 
 }
+
