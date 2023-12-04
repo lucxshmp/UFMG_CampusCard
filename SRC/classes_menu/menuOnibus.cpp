@@ -5,7 +5,7 @@
 
 namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
-    MenuOnibusVans::MenuOnibusVans(){
+    MenuOnibus::MenuOnibusVans(){
         _title = "\n\n********** MENU ONIBUS **********\n\n ";
         _title = "Escolha uma opção: \n";
         _options.push_back("1. Cadastrar ônibus");
@@ -15,13 +15,13 @@ namespace media::ui{
         std::cout << "> ";
     }
 
-    Menu *MenuOnibusVans::next(unsigned option) {
+    Menu *MenuOnibus::next(unsigned option) {
         switch (option) {
             case 1:
                   meuOnibus.cadastrarOnibus();
                   meuOnibus.exibirInformacao();
                 return nullptr;
-          
+
             case 2:
 
                meuOnibus.exibirOnibusCadastrados();
