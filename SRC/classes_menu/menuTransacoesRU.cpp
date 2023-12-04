@@ -4,9 +4,9 @@ namespace media::ui{
 /// @brief construtor com todas as opcoes do menu principal 
     MenuTransacoesRU::MenuTransacoesRU(){
         _title = "Transacoes RU";
-        _options.push_back("1 - marcar hora");
-        _options.push_back("2 - consultar data");
-        _options.push_back("3 - sei la ");
+        _options.push_back("1 - Realizar Pagamento");
+        _options.push_back("2 - Realizar Deposito");
+        _options.push_back("3 - Consultar Saldo");
     }
 
     Menu *MenuTransacoesRU::next(unsigned option) {
