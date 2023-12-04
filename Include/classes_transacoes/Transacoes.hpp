@@ -10,6 +10,7 @@ e gerar e ler documentos para pagamento.  */
 class Transacoes {
     private: 
         bool confirma_pagamento;
+        bool confirma_deposito;
     public: 
         Transacoes();
         void pagamento();
