@@ -41,6 +41,8 @@ Em sétimo plano, é possível montar o seu calendário com as datas de atividad
 
 Em oitavo plano, é possível ver as salas de aula separadas por prédios, para não ficar perdido sem saber para qual prédios se dirigir quando sair a sua grade semestral. Além disso, é possível cadastras salas que são úteis para você, como salas do colegiado, diretoria, outros órgãos acadêmicos e salas de professores, e exibí-las quando necessário.
 
-## Passos futuros
 
+## Passos futuros
+Para o futuro espera-se poder desenvolver as funcionalidades para todos os turnos, além disso espera-se poder desenvolver cada vez mais funções para que fiquem melhores e eficientes cada vez mais.
 Juntando todos esses menus e funcionalidade temos o sistema completo do UFMG Campus Card, que vai facilitar a vida das pessoas que vivem no campus da UFMG. Futuramente é possível analisar as dificuldades do projeto e implementar novas soluções para ele!
+
