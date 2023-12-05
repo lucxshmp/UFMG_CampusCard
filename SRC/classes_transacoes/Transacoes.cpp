@@ -5,17 +5,27 @@
 Saldo saldo;
 Usuario usuario;
 
-
+//inicializando a classe
 Transacoes::Transacoes(){
     confirma_pagamento=false;
     confirma_deposito=false;
 }
+//Getters
+bool Transacoes::get_pagamento(){
+    return confirma_pagamento;
+}
+bool Transacoes::get_deposito(){
+    return confirma_deposito;
+}
+//--------------------------------------------------
+//Setters
 void Transacoes::set_pagamento(bool pagamento){
     confirma_pagamento= pagamento;
 }
 void Transacoes::set_deposito(bool deposito){
     confirma_deposito= deposito;
 }
+//---------------------------------------------------
 
 void Transacoes::pagamento(){
     if (confirma_pagamento==true){

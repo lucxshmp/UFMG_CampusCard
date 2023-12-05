@@ -14,6 +14,8 @@ class Transacoes {
         bool confirma_deposito;
     public: 
         Transacoes();
+        bool get_pagamento();
+        bool get_deposito();
         void set_pagamento(bool pagamento);
         void set_deposito(bool deposito);
         void pagamento();
