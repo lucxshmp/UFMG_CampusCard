@@ -1,7 +1,7 @@
 #pragma once
 
-#include "menu.hpp"
-#include "menuSalas.hpp"
+#include "Include\classes_menu\menu.hpp"
+#include "Include\classes_menu\menuSalas.hpp"
 #include <string>
 #include <iostream>
 

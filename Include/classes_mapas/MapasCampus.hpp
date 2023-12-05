@@ -1,7 +1,7 @@
 #pragma once
 
-#include "menuMapas.hpp"
-#include "menu.hpp"
+#include "Include\classes_menu\menuMapas.hpp"
+#include "Include\classes_menu\menu.hpp"
 #include <string>
 #include <iostream>
 

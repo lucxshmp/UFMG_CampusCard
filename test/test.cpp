@@ -46,7 +46,7 @@ TEST_CASE("CarteiraEstudante - obterStatusValidade e definirStatusValidade") {
 
 
     //TESTES CLASSES DE TEMPOS
-    TEST_CASE("teste da validação da data"){
+    TEST_CASE("teste da validacao da data"){
         
         Validacao validacao;
     
@@ -63,7 +63,7 @@ TEST_CASE("CarteiraEstudante - obterStatusValidade e definirStatusValidade") {
     }
     
     
-    TEST_CASE("teste da validação da hora"){
+    TEST_CASE("teste da validacao da hora"){
         
         Validacao validacao;
         //teste de formatos de horas válidos

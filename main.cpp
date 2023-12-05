@@ -1,9 +1,9 @@
 #include <iostream>
-#include "usuario.hpp"
-#include "login.hpp"
-#include "menu.hpp"
-#include "main_menu.hpp"
-#include "validação.hpp"
+#include "..\classes_identificacao\usuario.hpp"
+#include "..\classes_identificacao\login.hpp"
+#include "..\classes_menu\menu.hpp"
+#include "..\classes_menu\main_menu.hpp"
+#include "..\classes_apoio\validacao.hpp"
 
 int main() {
     

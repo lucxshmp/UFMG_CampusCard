@@ -1,8 +1,6 @@
 #pragma once 
 
 #include "menu.hpp"
-#include "MapasCampus.hpp"
-#include "MapasInterno.hpp"
 #include <string>
 
 namespace media::ui{
