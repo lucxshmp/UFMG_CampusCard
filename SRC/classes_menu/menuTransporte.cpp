@@ -27,6 +27,8 @@ namespace media::ui{
     Menu *MenuTransporte::next(unsigned option) {
         media::ui::MenuOnibus onibus;
         media::ui::MenuVans vans;
+        
+        int aux = 0;
         do{
         switch (option) {
 

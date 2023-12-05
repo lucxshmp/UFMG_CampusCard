@@ -27,7 +27,7 @@ namespace media::ui{
 
         Rotina rotina;
         Grade_Semanal grade;
-        int aux;
+        int aux = 0;
         do {
             switch (option){
 

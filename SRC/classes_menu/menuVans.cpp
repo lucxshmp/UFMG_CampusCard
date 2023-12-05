@@ -24,6 +24,7 @@ namespace media {
 
         Menu *MenuVans::next(unsigned option){;
           Van minhaVan;
+          int aux = 0;
           switch (option) {
             case 1:
                 std::cin.ignore();

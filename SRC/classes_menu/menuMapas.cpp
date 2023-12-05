@@ -26,6 +26,7 @@ namespace media::ui{
         media::ui::MapasCampus campus;
         media::ui::MapasInterno interno;
 
+        int aux = 0;
         do{
         switch (option) {
 

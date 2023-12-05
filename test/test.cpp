@@ -4,6 +4,13 @@
 #include "eventos.hpp"
 #include "rotina.hpp" 
 #include "validacao.hpp"
+#include "MapasCampus.hpp"
+#include "menuDepartamento.hpp"
+#include "menuUteis.hpp"
+#include "SalasUteis.hpp"
+#include "MapasInterno.hpp"
+#include "redirecionamento.hpp"
+#include "menuMapas.hpp"
 
 
 TEST_CASE("CarteiraEstudante - GerarCarteiraDigital") {
@@ -281,4 +288,170 @@ TEST_CASE("CarteiraEstudante - obterStatusValidade e definirStatusValidade") {
         
     }
     //FIM DOS TESTES DE CLASSE DE TEMPO
-    
+
+
+    // menuDepartamento_test.cpp
+
+TEST_CASE("MenuDepartamento - Redirecionamento de Links") {
+    media::ui::MenuDepartamento menu;
+
+    SUBCASE("Redirecionamento ICEx") {
+        CHECK(menu.next(1) == nullptr);
+    }
+
+    SUBCASE("Redirecionamento Engenharia") {
+        CHECK(menu.next(2) == nullptr);
+    }
+
+    SUBCASE("Redirecionamento FACE") {
+        CHECK(menu.next(3) == nullptr);
+    }
+
+    SUBCASE("Redirecionamento IGC") {
+        CHECK(menu.next(4) == nullptr);
+    }
+
+    SUBCASE("Redirecionamento Escola de Musica") {
+        CHECK(menu.next(5) == nullptr);
+    }
+
+    SUBCASE("Redirecionamento ICB") {
+        CHECK(menu.next(6) == nullptr);
+    }
+}
+
+// menuUteis_test.cpp
+
+TEST_CASE("MenuUteis - Cadastro de Sala") {
+    media::ui::MenuUteis menu;
+
+    SUBCASE("Cadastrar Sala") {
+        CHECK(menu.next(1) == nullptr);
+    }
+
+    SUBCASE("Consultar Salas Cadastradas") {
+        CHECK(menu.next(2) == nullptr);
+    }
+
+    SUBCASE("Salvar e Sair") {
+        CHECK(menu.next(3) == nullptr);
+    }
+}
+
+// SalasUteis_test.cpp
+
+
+TEST_CASE("CadastroSala - Manipulação de Cadastro") {
+    CadastroSala cadastro;
+
+    SUBCASE("Cadastrar e Exibir Sala") {
+        cadastro.cadastrarSala("Sala Teste", "Predio Teste", "123");
+        CHECK_NOTHROW(cadastro.exibirSalas());
+    }
+
+    SUBCASE("Salvar e Carregar Cadastro") {
+        cadastro.salvarCadastro();
+        CadastroSala novoCadastro;
+        CHECK_NOTHROW(novoCadastro.carregarCadastro());
+    }
+}
+
+// redirecionamento_test.cpp
+
+TEST_CASE("Redirecionamento - Testes de Redirecionamento") {
+    SUBCASE("Redirecionamento para Link Válido") {
+        std::string link = "https://github.com/luigidcsoares";
+        CHECK_NOTHROW(Redirecionamento::redirecionarLink(link));
+    }
+
+    SUBCASE("Redirecionamento para Link Inválido") {
+        std::string link = "link_invalido";
+        CHECK_NOTHROW(Redirecionamento::redirecionarLink(link));
+        // Aqui você pode adicionar uma verificação mais específica
+        // para garantir que o redirecionamento para um link inválido
+        // seja tratado conforme o esperado.
+    }
+}
+
+// menuMapas_test.cpp
+
+TEST_CASE("MenuMapas - Testes de Navegação") {
+    media::ui::MenuMapas menu;
+
+    SUBCASE("Navegação para Mapas dos Campi") {
+        CHECK_NOTHROW(menu.next(1));
+    }
+
+    SUBCASE("Navegação para Mapas do Interno") {
+        CHECK_NOTHROW(menu.next(2));
+    }
+
+    SUBCASE("Navegação com Opção Inválida") {
+        CHECK(menu.next(3) == nullptr);
+    }
+}
+
+// MapasInterno_test.cpp
+
+TEST_CASE("MapasInterno - Testes de Redirecionamento") {
+    media::ui::MapasInterno interno;
+
+    SUBCASE("Redirecionamento para Linha 1") {
+        CHECK_NOTHROW(interno.next(1));
+    }
+
+    SUBCASE("Redirecionamento para Linha 2") {
+        CHECK_NOTHROW(interno.next(2));
+    }
+
+    SUBCASE("Redirecionamento para Linha 3") {
+        CHECK_NOTHROW(interno.next(3));
+    }
+
+    SUBCASE("Redirecionamento para Linha 3 - Atendimento BH-Tec") {
+        CHECK_NOTHROW(interno.next(4));
+    }
+
+    SUBCASE("Redirecionamento para Linha 4") {
+        CHECK_NOTHROW(interno.next(5));
+    }
+
+    SUBCASE("Redirecionamento para Linha 4 - Atendimento McDonalds") {
+        CHECK_NOTHROW(interno.next(6));
+    }
+
+    SUBCASE("Redirecionamento para Linha 4 - Atendimento McDonalds e BH-Tec") {
+        CHECK_NOTHROW(interno.next(7));
+    }
+
+    SUBCASE("Redirecionamento para Linha Sabado") {
+        CHECK_NOTHROW(interno.next(8));
+    }
+
+    SUBCASE("Navegação com Opção Inválida") {
+        CHECK(interno.next(9) == nullptr);
+    }
+}
+
+// MapasCampus_test.cpp
+
+
+TEST_CASE("MapasCampus - Testes de Redirecionamento") {
+    media::ui::MapasCampus campus;
+
+    SUBCASE("Redirecionamento para Campus Pampulha") {
+        CHECK_NOTHROW(campus.next(1));
+    }
+
+    SUBCASE("Redirecionamento para Campus Centro BH") {
+        CHECK_NOTHROW(campus.next(2));
+    }
+
+    SUBCASE("Redirecionamento para Campus Montes Claros") {
+        CHECK_NOTHROW(campus.next(3));
+    }
+
+    SUBCASE("Navegação com Opção Inválida") {
+        CHECK(campus.next(4) == nullptr);
+    }
+}

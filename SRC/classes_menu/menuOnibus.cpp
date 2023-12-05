@@ -27,6 +27,7 @@ namespace media{
 
     Menu *MenuOnibus::next(unsigned option) {
       Onibus meuOnibus;
+      int aux = 0;
         switch (option) {
             case 1:
                   meuOnibus.cadastrarOnibus();

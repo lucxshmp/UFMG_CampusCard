@@ -36,6 +36,7 @@ namespace media::ui{
         media::ui::MenuMapas mapas;
         media::ui::MenuCarteirinha carteirinha;
         
+        int aux = 0;
         do {  
             switch (option){
 

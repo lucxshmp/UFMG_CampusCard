@@ -24,6 +24,7 @@ namespace media::ui{
         media::ui::MenuUteis uteis;
         media::ui::MenuDepartamento depto;
 
+        int aux = 0;
         do {
         switch (option) {
 

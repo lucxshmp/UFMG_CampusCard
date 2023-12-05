@@ -27,6 +27,7 @@ namespace media::ui{
  
     Menu *MenuTransacoesRU::next(unsigned option) {
         
+        int aux = 0;
         switch (option) {
 
             case 0:
