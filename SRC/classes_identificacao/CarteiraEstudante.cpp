@@ -3,7 +3,7 @@
 
 CarteiraEstudante::CarteiraEstudante() : ValidadeCarteira(true) {}
 
-/// @brief função que gera um pdf com uma carteira de estudante virtual atraves
+/*/// @brief função que gera um pdf com uma carteira de estudante virtual atraves
 /// da biblioteca "libharu"
 /// @param nomeArquivo que você quer gerar 
 void CarteiraEstudante::GerarCarteiraDigital(const char* nomeArquivo) {
@@ -75,7 +75,7 @@ void CarteiraEstudante::GerarCarteiraDigital(const char* nomeArquivo) {
     HPDF_Free(pdf);
 
     std::cout << "Carteira de Estudante gerada com sucesso: " << nomeArquivo << std::endl;
-}
+}*/
 
 
 /// @brief função que dá informações sobre a carteira fisica do estudante
